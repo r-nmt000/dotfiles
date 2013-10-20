@@ -1,0 +1,21 @@
+source ~/.zsh/antigen/antigen.zsh
+
+#load the oh-my-zsh's library
+antigen-use oh-my-zsh
+
+antigen-bundles << EOBUNDLES
+git
+github
+brew
+autojump
+zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+#syntax highlighting bundle
+antigen-bundle zsh-users/zsh-syntax-highlighting
+#load the theme
+antigen-theme gnzh
+
+#tell antigen that you're done
+antigen-apply
+
