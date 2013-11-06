@@ -1,6 +1,12 @@
+
+
+#read setting for antigen
 if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
 				source ~/.zsh/.zshrc.antigen
 fi
+
+#read setting for rbenv
+eval "$(rbenv init - zsh)"
 
 #Customize to your needs...
 
@@ -45,3 +51,5 @@ kterm*|xterm)
     }
     ;;
 esac
+
+PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting

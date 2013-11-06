@@ -9,14 +9,23 @@ set shiftwidth=2 "insert 2 spaces when you start a new line
 set smartindent "indent automatically
 set cursorline "highlight current line
 "highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
-highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=black "hightlight current line by color
+"highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=darkgrey "hightlight current line by color
 set laststatus=2
 set statusline=%F%r%h%=
- "hightlight current line by color
-"#####search settings##### "hightlight current line by color
+
+set wildmenu wildmode=list:full "completion in command line mode
+
+autocmd ColorScheme * highlight CursorLine ctermbg=238
+autocmd ColorScheme * highlight Comment ctermfg=245
+autocmd ColorScheme * highlight LineNr ctermfg=245
+autocmd ColorScheme * highlight Visual ctermbg=239
+autocmd ColorScheme * highlight Normal ctermbg=0
+ "#####search settings##### "hightlight current line by color
 set ignorecase "ignore upper or lower case
 set smartcase "if search query includes upper case, search only words which include upper case
 set wrapscan "when search ends, go back to search top
+set incsearch "set incremental search
+set hlsearch "highlight search query
 
 "#####Keybinds#####
 "change insert mode to normal mode with Ctrl+j
@@ -35,18 +44,21 @@ nnoremap N Nzz
 nnoremap ; :
 nnoremap : ;
 
+"###neobundle setting###
+set nocompatible               " be iMproved
+filetype off
 
-"####vundle settings####
-set nocompatible "turn off compatibility with vi
-filetype off "turn off file type estimation
-"initialize vundle and manage vundle with itself
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-"original repos on github
 
-"vim-scripts repos
-
-"non github repos
-
-filetype plugin indent on "turn on file type estimation
+if has('vim_starting')
+	set runtimepath+=~/.vim/bundle/neobundle.vim
+	call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+" originalrepos on github
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun'
+:
+filetype plugin indent on     " required!
+filetype indent on
+syntax on
