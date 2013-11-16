@@ -40,9 +40,6 @@ nnoremap gk k
 nnoremap n nzz
 nnoremap N Nzz
 
-"easy to enter command mode
-nnoremap ; :
-nnoremap : ;
 
 "###neobundle setting###
 set nocompatible               " be iMproved
