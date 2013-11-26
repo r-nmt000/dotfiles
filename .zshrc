@@ -27,6 +27,11 @@ bindkey "^N" history-beginning-search-forward-end
 autoload -U compinit
 compinit
 
+
+#alias, path
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+
+
 #zshの言語設定
 export LANG=ja_JP.UTF-8
 #cd入力しないでcd

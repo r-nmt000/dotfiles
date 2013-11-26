@@ -1,11 +1,13 @@
-DOT_FILES = .zshrc .vimrc .vim .zsh
+DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh
 
 .PHONY: all clean
-all: zsh vim submodule
+all: zsh vim vrapper submodule
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
 vim: $(foreach f, $(filter .vim%, $(DOT_FILES)), link-dot-file-$(f))
+
+vrapper: $(foreach f, $(filter .vrapper%, $(DOT_FILES)), link-dot-file-$(f))
 
 submodule: get-modules
 

@@ -1,0 +1,8 @@
+neobundle.vim
+syntastic
+unite.vim
+vim-quickrun
+vim-scala
+vimfiler
+vimproc
+vimshell
