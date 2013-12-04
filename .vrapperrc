@@ -1,17 +1,18 @@
 "#####Keybinds#####
-"change insert mode to normal mode with Ctrl+j
-inoremap <C-j> <ESC>
 "move cursor on logical line basis
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+"smooth scroll
+noremap <C-u> <C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>
+noremap <C-d> <C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>
 "centering next search result by n, N
 nnoremap n nzz
 nnoremap N Nzz
 "cut and yank a word
-nnoremap xx vawx 
-nnoremap yy vawy
+nnoremap vx vawxh 
+nnoremap vy vawy
 "move to other windows
 nnoremap , <C-w>h
 nnoremap . <C-w>l

@@ -1,4 +1,6 @@
 neobundle.vim
+open-browser.vim
+previm
 syntastic
 unite.vim
 vim-quickrun

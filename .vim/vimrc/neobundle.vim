@@ -16,6 +16,8 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 :
 filetype plugin indent on     " required!
 filetype indent on

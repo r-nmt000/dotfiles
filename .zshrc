@@ -16,6 +16,7 @@ SAVEHIST=100000                       # 保存される履歴の数
 setopt extended_history               # 履歴ファイルに時刻を記録
 setopt hist_ignore_dups               # 重複するリストを無視
 setopt share_history                  # 履歴を共有
+setopt nonomatch											# glob失敗時の警告をやめさせる:
 function history-all { history -E 1 } # 全履歴の一覧を出力する
 #C-pとC-nを履歴検索に割り当て
 autoload history-search-end
@@ -58,3 +59,4 @@ kterm*|xterm)
 esac
 
 PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
+
