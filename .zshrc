@@ -1,5 +1,3 @@
-
-
 #read setting for antigen
 if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
 				source ~/.zsh/.zshrc.antigen
@@ -60,3 +58,6 @@ esac
 
 PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
 
+#settings for virualenv(Python)
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh

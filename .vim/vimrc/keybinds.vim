@@ -1,5 +1,6 @@
 "#####Keybinds#####
 "move cursor on logical line basis
+let mapleader=" "
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
