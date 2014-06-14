@@ -30,5 +30,3 @@ get-modules:
 
 make-vimproc:
 	@echo "make vimproc"
-	@cd .vim/bundle/vimproc
-	@make
