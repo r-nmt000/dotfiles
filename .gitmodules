@@ -1,3 +1,12 @@
 [submodule ".zsh/antigen"]
 	path = .zsh/antigen
-	url = https://github.com/zsh-users/antigen.git
+  url = https://github.com/zsh-users/antigen.git
+
+[submodule ".vim/bundle/neobundle.vim"]
+	path = .vim/bundle/neobundle.vim
+  url = https://github.com/Shougo/neobundle.vim.git
+
+[submodule ".vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc.vim
+  url = https://github.com/Shougo/vimproc.vim.git
+
