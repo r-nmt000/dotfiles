@@ -1,6 +1,5 @@
 "#####Keybinds#####
 "move cursor on logical line basis
-let mapleader=" "
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -17,4 +16,8 @@ nnoremap vy vawy
 "move to other windows
 nnoremap , <C-w>h
 nnoremap . <C-w>l
-
+"tab
+nnoremap [tab] <Nop>
+nmap <Space>t [tab]
+nnoremap <silent> [tab]f :tabf<Space>
+nnoremap <silent> [tab]c :tabc<CR>
