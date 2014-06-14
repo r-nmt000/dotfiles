@@ -30,6 +30,13 @@ make
 
 * vimproc needs to be maked
 
+### 5. Install Vim Plugins
+
+```
+vim .vim/vimrc/neobundle.vim
+
+:NeoBundleInstall
+```
 
 **Done!!**
 
