@@ -1,7 +1,7 @@
 DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh
 
 .PHONY: all clean
-all: zsh vim vrapper submodule
+all: zsh vim vrapper submodule vimproc
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -10,6 +10,8 @@ vim: $(foreach f, $(filter .vim%, $(DOT_FILES)), link-dot-file-$(f))
 vrapper: $(foreach f, $(filter .vrapper%, $(DOT_FILES)), link-dot-file-$(f))
 
 submodule: get-modules
+
+vimproc: make-vimproc
 
 clean: $(foreach f, $(DOT_FILES), unlink-dot-file-$(f))
 
@@ -24,3 +26,7 @@ unlink-dot-file-%: %
 get-modules:
 	@git submodule init
 	@git submodule update
+
+make-vimproc:
+	@cd .vim/bundle/vimproc
+	@make
