@@ -8,9 +8,9 @@ set statusline=%F%r%h%=
 set cursorline "highlight current line
 syntax on "color code
 
-
+set expandtab "convert tab to space
 set tabstop=2 "2 spaces for indent
-set shiftwidth=2
+set softtabstop=2 "2 spaces when tab is inputed
 set shiftwidth=2 "insert 2 spaces when you start a new line
 set smartindent "indent automatically
 "highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
@@ -42,5 +42,9 @@ set smartcase "if search query includes upper case, search only words which incl
 set wrapscan "when search ends, go back to search top
 set incsearch "set incremental search
 set hlsearch "highlight search query
+
+"###visualize tab and space###
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 

@@ -3,8 +3,6 @@ if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
 				source ~/.zsh/.zshrc.antigen
 fi
 
-#read setting for rbenv
-eval "$(rbenv init - zsh)"
 
 #Customize to your needs...
 
@@ -27,8 +25,6 @@ autoload -U compinit
 compinit
 
 
-#alias, path
-alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 
 #zshの言語設定
@@ -56,7 +52,17 @@ kterm*|xterm)
     ;;
 esac
 
+#################################
+# <<<< additional settings >>>>##
+#################################
+
+#read setting for rbenv
+eval "$(rbenv init - zsh)"
 PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
+
+
+#alias, path
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
