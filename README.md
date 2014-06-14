@@ -26,6 +26,11 @@ git clone https://github.com/r-nmt000/dotfiles.git
 make
 ```
 
+### 4. Execute make command in vimproc dir
+
+* vimproc needs to be maked
+
+
 **Done!!**
 
 
