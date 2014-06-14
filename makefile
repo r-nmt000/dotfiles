@@ -24,9 +24,11 @@ unlink-dot-file-%: %
 	@$(RM) $(HOME)/$<
 
 get-modules:
+	@echo "install submodules"
 	@git submodule init
 	@git submodule update
 
 make-vimproc:
+	@echo "make vimproc"
 	@cd .vim/bundle/vimproc
 	@make
