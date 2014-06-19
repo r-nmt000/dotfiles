@@ -55,14 +55,14 @@ cd jedi-vim
 git submodule update --init
 ```
 
-1. try 'NeoBundleUpdate'
+2. try 'NeoBundleUpdate'
 
 ```
 vim .vim/vimrc/neobundle.vim
 
 :NeoBundleUpdate
 ```
-1. check jedi-vim works or not
+3. check jedi-vim works or not
 
 ```
 :h jedi
