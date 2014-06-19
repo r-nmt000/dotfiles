@@ -43,4 +43,30 @@ vim .vim/vimrc/neobundle.vim
 
 ##ATTENTION
 
-1. Make sure import eclipse_keybinds.epf manually.
+* Make sure import eclipse_keybinds.epf manually.
+* If you can't install jedi-vim with `NeoBundleInstall`, try following steps
+
+1. install jedi-vim manually
+
+```
+cd .vim/bundle
+git clone https://github.com/davidhalter/jedi-vim.git
+cd jedi-vim
+git submodule update --init
+```
+
+1. try 'NeoBundleUpdate'
+
+```
+vim .vim/vimrc/neobundle.vim
+
+:NeoBundleUpdate
+```
+1. check jedi-vim works or not
+
+```
+:h jedi
+```
+
+if jedi-vim is working, help for jedi-vim will show up
+
