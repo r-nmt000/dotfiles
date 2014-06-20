@@ -1,6 +1,6 @@
-#read setting for antigen
-if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
-				source ~/.zsh/.zshrc.antigen
+#read settings for antigen
+if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
+   source ~/.zsh/.zshrc.antigen
 fi
 
 
@@ -52,21 +52,39 @@ kterm*|xterm)
     ;;
 esac
 
-#################################
-# <<<< additional settings >>>>##
-#################################
-
-#read setting for rbenv
-eval "$(rbenv init - zsh)"
-PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
-
-
-#alias, path
-alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
 
-if [[ -f /usr/local/bin/virtualenvwrapper.sh]]; then
-  source /usr/local/bin/virtualenvwrapper.sh
-fi
+########################
+# settings for each OS #
+########################
+
+case ${OSTYPE} in
+  darwin*)
+    #Settings for Mac
+
+    #read setting for rbenv
+    eval "$(rbenv init - zsh)"
+    PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
+    #
+
+    #alias, path
+    alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+
+
+    if [ -f /usr/local/bin/virtualenvwrapper.sh]; then
+      source /usr/local/bin/virtualenvwrapper.sh
+    fi
+    ;;
+
+
+  linux*)
+    #Settings for Linux
+
+    if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+      source /usr/bin/virtualenvwrapper.sh
+    fi
+    ;;
+esac
+
