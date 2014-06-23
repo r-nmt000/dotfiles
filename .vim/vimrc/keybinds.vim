@@ -13,6 +13,8 @@ nnoremap N Nzz
 "cut and yank a word
 nnoremap vx vawxh 
 nnoremap vy vawy
+"go to the first non-blank character in line 
+nnoremap 0 ^
 "move to other windows
 nnoremap , <C-w>h
 nnoremap . <C-w>l
