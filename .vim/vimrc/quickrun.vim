@@ -11,4 +11,4 @@ let g:quickrun_config = {
 \}
 
 "shortcut key
-nnoremap <Leader>r :QuickRun<CR>
+nnoremap <Space>r :QuickRun<CR>

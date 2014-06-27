@@ -33,6 +33,10 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'dhalter/jedi-vim'
 NeoBundle 'vim-scripts/xptemplate'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'gist:r-nmt000/8648309', {
        \ 'name': 'markdown-cheatsheet',
        \ 'script_type': 'doc'}

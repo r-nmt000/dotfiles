@@ -142,7 +142,7 @@ function! neobundle#config#source(names, ...) "{{{
   redir END
 
   redir => filetype_before
-  execute 'silent autocmd FileType' &filetype
+  silent autocmd FileType
   redir END
 
   let reset_ftplugin = 0
@@ -173,7 +173,7 @@ function! neobundle#config#source(names, ...) "{{{
   endfor
 
   redir => filetype_after
-  execute 'silent autocmd FileType' &filetype
+  silent autocmd FileType
   redir END
 
   if reset_ftplugin
@@ -443,7 +443,7 @@ function! neobundle#config#add(bundle, ...) "{{{
     " Warning.
     call neobundle#util#print_error(
           \ '[neobundle] Plugin "' . bundle.name .
-          \ '" may be defined multiply in .vimrc')
+          \ '" appears to be defined multiple times in .vimrc.')
   endif
 endfunction"}}}
 
