@@ -1,0 +1,35 @@
+[user]
+	name = Ryusuke Nomoto
+	email = r.nmt000@gmail.com
+[github]
+	user = r-nmt000
+	token = 75482b41622006fa00edda66b1a2d316
+[credential]
+	helper = osxkeychain
+
+[alias]
+  ignore = !"f() { local s=$1; shift; \
+    while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
+    curl "http://www.gitignore.io/api/$s"; }; f"
+
+[core]
+	excludesfile = /Users/nomoto/repos/.gitignore
+	editor = /usr/bin/vim
+[push]
+	default = simple
+[merge]
+#	tool = extMerge
+	tool = meld
+        keepBackup = false
+#[mergetool "extMerge"]
+#	cmd = "extMerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\" "
+[mergetool]
+	trustExitCode = false
+	keepTemporaries = false
+	keepBackup = false
+[diff]
+#	external = extDiff
+#	tool = extDiff
+	tool = meld
+#[difftool "extDiff"]
+#	cmd = "extDiff \"$LOCAL\" \"$REMOTE\" "
