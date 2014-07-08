@@ -36,6 +36,19 @@ autocmd QuickFixCmdPost *grep* cwindow
 set nobackup
 set noswapfile
 
+"save the last cursor position before file closed
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+          \   exe "normal! g'\"" |
+          \ endif
+  augroup END
+endif
+
 "####search settings#### 
 set ignorecase "ignore upper or lower case
 set smartcase "if search query includes upper case, search only words which include upper case
