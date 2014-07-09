@@ -15,6 +15,11 @@ nnoremap vx vawxh
 nnoremap vy vawy
 "go to the first non-blank character in line 
 nnoremap 0 ^
+"exchange ; and :
+nnoremap ; :
+nnoremap : ;
+"easy Esc
+imap <C-j> <Esc>
 "move to other windows
 nnoremap , <C-w>h
 nnoremap . <C-w>l
