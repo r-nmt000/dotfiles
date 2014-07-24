@@ -26,5 +26,5 @@ nnoremap . <C-w>l
 "tab
 nnoremap [tab] <Nop>
 nmap <Space>t [tab]
-nnoremap <silent> [tab]f :tabf<Space>
+nnoremap <silent> [tab]n :tabf<Space>
 nnoremap <silent> [tab]c :tabc<CR>
