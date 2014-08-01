@@ -12,6 +12,9 @@ sudo yum update
 yum install zsh
 yum install vim 
 yum install git
+//change login shell to zsh
+usermod -s /bin/zsh root
+usermod -s /bin/zsh username
 ```
 
 ### 2. Clone this repository
