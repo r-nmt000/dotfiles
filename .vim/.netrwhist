@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/nomoto/repos/r-nmt000.github.io/source/_posts'
-let g:netrw_dirhist_2='/usr/local/Cellar/llvm33/3.3/lib/llvm-3.3'
-let g:netrw_dirhist_3='/Users/nomoto/repos/moaningprogramminglanguage/target/scala-2.10/test-classes'
-let g:netrw_dirhist_4='/Users/nomoto/.zsh'
-let g:netrw_dirhist_5='/Users/nomoto/repos/sbt.g8/src/main/g8'
-let g:netrw_dirhist_6='/Users/nomoto/dotfiles/.vim/vimrc'
-let g:netrw_dirhist_7='/Users/nomoto/repos/test/sudo.vim'
-let g:netrw_dirhist_8='/Users/nomoto/repos/test/hybrid.vim'
-let g:netrw_dirhist_9='/Users/nomoto/.rbenv'
+let g:netrw_dirhist_cnt =0

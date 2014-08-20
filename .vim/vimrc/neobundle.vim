@@ -36,7 +36,6 @@ NeoBundle 'vim-scripts/xptemplate'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'gist:r-nmt000/8648309', {
        \ 'name': 'markdown-cheatsheet',

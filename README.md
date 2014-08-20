@@ -26,10 +26,16 @@ git clone https://github.com/r-nmt000/dotfiles.git
 ### 3. Execute make command
 
 ```
+cd dotfiles
 make
 ```
 
 ### 4. Execute make command in vimproc dir
+
+```
+cd .vim/bundle/vimproc
+make
+```
 
 * vimproc needs to be maked
 
