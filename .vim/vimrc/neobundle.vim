@@ -38,6 +38,9 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gist:r-nmt000/8648309', {
        \ 'name': 'markdown-cheatsheet',
        \ 'script_type': 'doc'}
