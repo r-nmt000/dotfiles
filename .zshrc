@@ -12,7 +12,8 @@ SAVEHIST=100000                       # 保存される履歴の数
 setopt extended_history               # 履歴ファイルに時刻を記録
 setopt hist_ignore_dups               # 重複するリストを無視
 setopt share_history                  # 履歴を共有
-setopt nonomatch											# glob失敗時の警告をやめさせる:
+setopt nonomatch                      # glob失敗時の警告をやめさせる
+unsetopt auto-menu                    # タブによる順番切り替えを行わない
 function history-all { history -E 1 } # 全履歴の一覧を出力する
 #C-pとC-nを履歴検索に割り当て
 autoload history-search-end
@@ -52,6 +53,26 @@ kterm*|xterm)
     ;;
 esac
 
+
+
+########################
+#       alias          #
+########################
+
+# -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
+alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='*/cache/*'"
+
+# tree
+alias tree="tree -NC" # N: 文字化け対策, C:色をつける
+
+
+#Term2のタブ名を変更する
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
+
+# cdしたあとで、自動的に ls する
+function chpwd() { ls -1 }
 
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
