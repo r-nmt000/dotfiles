@@ -13,7 +13,6 @@ setopt extended_history               # 履歴ファイルに時刻を記録
 setopt hist_ignore_dups               # 重複するリストを無視
 setopt share_history                  # 履歴を共有
 setopt nonomatch                      # glob失敗時の警告をやめさせる
-unsetopt auto-menu                    # タブによる順番切り替えを行わない
 function history-all { history -E 1 } # 全履歴の一覧を出力する
 #C-pとC-nを履歴検索に割り当て
 autoload history-search-end
@@ -94,7 +93,7 @@ case ${OSTYPE} in
     alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 
-    if [ -f /usr/local/bin/virtualenvwrapper.sh]; then
+    if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
       source /usr/local/bin/virtualenvwrapper.sh
     fi
     ;;
