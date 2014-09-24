@@ -12,9 +12,9 @@ nnoremap n nzz
 nnoremap N Nzz
 "cut, yank, delete a word
 nnoremap vx vawxh 
-nnoremap yw yaw 
-nnoremap dw daw
-nnoremap cw caw
+nnoremap yw yiw 
+nnoremap dw diw
+nnoremap cw ciw
 
 "go to the first non-blank character in line 
 nnoremap 0 ^
