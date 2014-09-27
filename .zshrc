@@ -37,13 +37,7 @@ setopt auto_pushd
 setopt correct
 #リストをつめて表示
 setopt list_packed
-# backspaseが入力できない問題
-# terminfoがうまく設定されないのが原因らしい
-#[[ $TERM = "eterm-color" ]] && TERM=xterm-256color
-# emacsでmulti-termした時先頭に\342\236\234みたいのが出るのの対応
-#[[ $EMACS = t ]] && unsetopt zle
 # terminalのタイトル設定
-#
 case "${TERM}" in
 kterm*|xterm)
     precmd() {
@@ -65,13 +59,6 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
 
 
-#Term2のタブ名を変更する
-function title {
-    echo -ne "\033]0;"$*"\007"
-}
-
-# cdしたあとで、自動的に ls する
-function chpwd() { ls -1 }
 
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
