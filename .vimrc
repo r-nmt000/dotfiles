@@ -8,6 +8,9 @@ set statusline=%F%r%h%=
 set cursorline "highlight current line
 syntax on "color code
 
+
+scriptencoding utf-8
+set encoding=utf-8
 set expandtab "convert tab to space
 set tabstop=2 "2 spaces for indent
 set softtabstop=2 "2 spaces when tab is inputed
@@ -58,6 +61,6 @@ set hlsearch "highlight search query
 
 "###visualize tab and space###
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+" set listchars=trail:-,nbsp:%
 
