@@ -43,7 +43,7 @@ setopt list_packed
 #BGの処理が終了したら即時報告
 setopt notify
 #zsh起動時にtmuxも起動
-# [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 # terminalのタイトル設定
 # case "${TERM}" in
 # kterm*|xterm)
