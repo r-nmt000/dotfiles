@@ -3,7 +3,7 @@ DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh .gitconfig .tmux.conf
 .PHONY: all clean
 all: zsh vim git vrapper tmux submodule
 
-zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f)) antigen
+zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
 vim: $(foreach f, $(filter .vim%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -30,10 +30,4 @@ get-modules:
 	@echo "install submodules"
 	@git submodule init
 	@git submodule update
-
-antigen:
-	@echo "mv my zsh prompt theme"
-	@mv .zsh/mytheme.zsh-theme ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/themes/
-	@echo "remove termsupport.zsh"
-	@rm -f ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/lib/termsupport.zsh
 

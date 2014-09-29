@@ -1,3 +1,6 @@
+#folkしたoh-my-zshを使うための設定
+export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
+
 #read settings for antigen
 if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
    source ~/.zsh/.zshrc.antigen
@@ -44,7 +47,6 @@ setopt notify
 function title {
   echo -ne "\033]0;"$*"\007"
 }
-
 ########################
 #       alias          #
 ########################
