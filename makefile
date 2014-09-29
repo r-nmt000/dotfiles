@@ -33,7 +33,7 @@ get-modules:
 
 antigen:
 	@echo "mv my zsh prompt theme"
-	@mv ./.zsh/mytheme.zsh-theme ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/themes/
+	@mv .zsh/mytheme.zsh-theme ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/themes/
 	@echo "remove termsupport.zsh"
 	@rm -f ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/lib/termsupport.zsh
 
