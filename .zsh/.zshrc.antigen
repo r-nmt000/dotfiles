@@ -15,7 +15,7 @@ EOBUNDLES
 antigen-bundle zsh-users/zsh-syntax-highlighting
 #load the theme
 # antigen-theme gnzh
-antigen-theme my-theme
+antigen-theme mytheme
 
 #tell antigen that you're done
 antigen-apply
