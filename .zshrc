@@ -29,9 +29,6 @@ compinit
 
 #zshの言語設定
 export LANG=ja_JP.UTF-8
-#SSH接続先で日本語が使えるようにする
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US>UTF-8
 #cd入力しないでcd
 setopt auto_cd
 #cdの履歴保存
@@ -43,7 +40,7 @@ setopt list_packed
 #BGの処理が終了したら即時報告
 setopt notify
 #zsh起動時にtmuxも起動
-[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+# [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux -u
 # terminalのタイトル設定
 # case "${TERM}" in
 # kterm*|xterm)
@@ -64,7 +61,8 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude
 # tree
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
 
-
+# tmuxで日本語を使えるように
+alias tmux="tmux -u"
 
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
