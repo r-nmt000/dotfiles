@@ -19,8 +19,8 @@ nnoremap cw ciw
 "go to the first non-blank character in line 
 nnoremap 0 ^
 "exchange ; and :
-nnoremap ; :
-nnoremap : ;
+" nnoremap ; :
+" nnoremap : ;
 "easy Esc
 imap <C-j> <Esc>
 "move to other windows
