@@ -1,7 +1,7 @@
 DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh .gitconfig .tmux.conf
 
 .PHONY: all clean
-all: zsh vim git vrapper tmux submodule
+all: zsh vim git vrapper tmux submodule link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -14,6 +14,10 @@ vrapper: $(foreach f, $(filter .vrapper%, $(DOT_FILES)), link-dot-file-$(f))
 tmux: $(foreach f, $(filter .tmux.conf, $(DOT_FILES)), link-dot-file-$(f))
 
 submodule: get-modules
+
+link-shellscript:
+	@echo "Create symlink bin to /usr/local/bin"
+	@./make_symlink.sh
 
 
 clean: $(foreach f, $(DOT_FILES), unlink-dot-file-$(f))

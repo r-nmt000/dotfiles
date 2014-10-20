@@ -18,18 +18,11 @@
 [push]
 	default = simple
 [merge]
-#	tool = extMerge
-	tool = meld
+	tool = vimdiff3
         keepBackup = false
-#[mergetool "extMerge"]
-#	cmd = "extMerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\" "
 [mergetool]
 	trustExitCode = false
 	keepTemporaries = false
 	keepBackup = false
-[diff]
-#	external = extDiff
-#	tool = extDiff
-	tool = meld
-#[difftool "extDiff"]
-#	cmd = "extDiff \"$LOCAL\" \"$REMOTE\" "
+[mergetool "vimdiff3"]
+	cmd = git_merge_wrapper3sh \"$MERGED \"$LOCAL\" \"$BASE\" \"$REMOTE\"
