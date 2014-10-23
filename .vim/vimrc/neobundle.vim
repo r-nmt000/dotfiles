@@ -41,6 +41,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'gist:r-nmt000/8648309', {
        \ 'name': 'markdown-cheatsheet',
        \ 'script_type': 'doc'}
