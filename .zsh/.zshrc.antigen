@@ -15,7 +15,7 @@ antigen-bundle django
 antigen-bundle pyenv
 antigen-bundle virtualenv
 antigen-bundle virtualenvwrapper
-antigen-bundle sbt antigen-bundle scala
+antigen-bundle sbt
 #syntax highlighting bundle
 antigen-bundle zsh-users/zsh-syntax-highlighting
 #load the theme
