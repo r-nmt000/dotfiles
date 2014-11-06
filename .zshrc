@@ -1,6 +1,6 @@
 #folkしたoh-my-zshを使うための設定
-export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
-
+# export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
+export ANTIGEN_DEFAULT_REPO_URL="https://github.com/robbyrussell/oh-my-zsh.git"
 #read settings for antigen
 if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
    source ~/.zsh/.zshrc.antigen
@@ -47,6 +47,16 @@ setopt notify
 function title {
   echo -ne "\033]0;"$*"\007"
 }
+
+########################
+#       pyenv          #
+########################
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -n ${PYENV_ROOT} ]; then
+  path=(${PYENV_ROOT}/bin ${PYENV_ROOT}/shims ${path}) 
+fi
+eval "$(pyenv init -)"
+
 ########################
 #       alias          #
 ########################
