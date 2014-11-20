@@ -7,8 +7,11 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 	call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-" originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
+"""""""""""""
+"   basic   "
+"""""""""""""
+" manage NeoBundle by itself
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
@@ -21,6 +24,31 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neomru.vim'
+if has('lua') && v:version >= 703 && has('patch885')
+  NeoBundleLazy "Shougo/neocomplete.vim", {
+        \ "autoload": {
+        \   "insert": 1,
+        \ }}
+  let g:neocomplete#enable_at_startup = 1
+  let s:hooks = neobundle#get_hooks("neocomplete.vim")
+  function! s:hooks.on_source(bundle)
+    let g:acp_enableAtStartup = 0
+    let g:neocomplet#enable_smart_case = 1
+    " NeoCompleteEnable
+  endfunction
+else
+  NeoBundleLazy "Shougo/neocomplcache.vim", {
+        \ "autoload": {
+        \   "insert": 1,
+        \ }}
+  let g:neocomplcache_enable_at_startup = 1
+  let s:hooks = neobundle#get_hooks("neocomplcache.vim")
+  function! s:hooks.on_source(bundle)
+    let g:acp_enableAtStartup = 0
+    let g:neocomplcache_enable_smart_case = 1
+    " NeoComplCacheEnable 
+  endfunction
+endif
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'derekwyatt/vim-scala'
@@ -42,6 +70,30 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'Townk/vim-autoclose'
+NeoBundleLazy 'majutsushi/tagbar', {
+      \ "autload": {
+      \   "commands": ["TagbarToggle"],
+      \ },
+      \ "build": {
+      \   "mac": "brew install ctags",
+      \ }}
+nmap <Space>t :TagbarToggle<CR>
+"""""""""""
+" Python  "
+"""""""""""
+" For reading Django with Vim properly
+NeoBundleLazy "lambdalisue/vim-django-support", {
+      \ "autoload": {
+      \   "filetypes": ["python", "python3", "djangohtml"]
+      \ }}
+" For managing virtualenv with Vim properly
+NeoBundleLazy "jmcantrell/vim-virtualenv", {
+      \ "autoload": {
+      \   "filetypes": ["python", "python3", "djangohtml"]
+      \ }}
+
+
+" others
 NeoBundle 'gist:r-nmt000/8648309', {
        \ 'name': 'markdown-cheatsheet',
        \ 'script_type': 'doc'}
