@@ -185,11 +185,41 @@ function! neobundle#parser#local(localdir, options, names) "{{{
       endif
 
       " Remove from lazy runtimepath
-      call filter(neobundle#config#get_lazy_rtps(),
-            \ "fnamemodify(v:val, ':h:t') != name")
+      call filter(neobundle#config#get_lazy_rtp_bundles(),
+            \ "fnamemodify(v:val.rtp, ':h:t') != name")
     endif
 
     call neobundle#parser#bundle([dir, options])
+  endfor
+endfunction"}}}
+
+function! neobundle#parser#load_toml(filename, default) "{{{
+  try
+    let toml = neobundle#TOML#parse_file(neobundle#util#expand(a:filename))
+  catch /vital: Text.TOML:/
+    call neobundle#util#print_error(
+          \ '[neobundle] Invalid toml format: ' . a:filename)
+    call neobundle#util#print_error(v:exception)
+    return 1
+  endtry
+  if type(toml) != type({}) || !has_key(toml, 'plugins')
+    call neobundle#util#print_error(
+          \ '[neobundle] Invalid toml file: ' . a:filename)
+    return 1
+  endif
+
+  " Parse.
+  for plugin in toml.plugins
+    if !has_key(plugin, 'repository')
+      call neobundle#util#print_error(
+            \ '[neobundle] No repository plugin data: ' . a:filename)
+      return 1
+    endif
+
+    let options = extend(plugin, a:default, 'keep')
+    " echomsg plugin.repository
+    " echomsg string(options)
+    call neobundle#parser#bundle([plugin.repository, options])
   endfor
 endfunction"}}}
 
@@ -209,27 +239,31 @@ function! neobundle#parser#path(path, ...) "{{{
   else
     let detect = neobundle#config#get_types('git').detect(path, opts)
     if !empty(detect)
+      let detect.name = neobundle#util#name_conversion(path)
       return detect
     endif
 
     let types = neobundle#config#get_types()
   endif
 
+  let detect = {}
   for type in types
     let detect = type.detect(path, opts)
-
     if !empty(detect)
-      return detect
+      break
     endif
   endfor
 
-  if isdirectory(path)
+  if empty(detect) && isdirectory(path)
     " Detect nosync type.
-    return { 'name' : split(path, '/')[-1],
-          \  'uri' : path, 'type' : 'nosync' }
+    return { 'uri' : path, 'type' : 'nosync' }
   endif
 
-  return {}
+  if !empty(detect) && !has_key(detect, 'name')
+    let detect.name = neobundle#util#name_conversion(path)
+  endif
+
+  return detect
 endfunction"}}}
 
 function! neobundle#parser#_function_prefix(name) "{{{
@@ -238,8 +272,7 @@ function! neobundle#parser#_function_prefix(name) "{{{
         \'^vim-', '','')
   let function_prefix = substitute(function_prefix,
         \'^unite-', 'unite#sources#','')
-  let function_prefix = substitute(function_prefix,
-        \'-', '_', 'g')
+  let function_prefix = tr(function_prefix, '-', '_')
   return function_prefix
 endfunction"}}}
 

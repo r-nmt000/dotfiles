@@ -14,7 +14,7 @@ Recommends:
 * [vimproc](https://github.com/Shougo/vimproc.vim) if you want to
   install/update asynchronously in Unite interface.
 
-Note: In :NeoBundleUpdate/:NeoBundleIstall commands, you can parallel update by
+Note: In :NeoBundleUpdate/:NeoBundleInstall commands, you can parallel update by
 vimproc, but you cannot do other work unlike Unite interface.
 
 Note: Neobundle is not a stable plugin manager.  If you want a stable plugin
@@ -72,8 +72,13 @@ Complete.
      Sample `.vimrc`:
 
      ```vim
+     " Note: Skip initialization for vim-tiny or vim-small.
+     if !1 | finish | endif
+
      if has('vim_starting')
-       set nocompatible               " Be iMproved
+       if &compatible
+         set nocompatible               " Be iMproved
+       endif
 
        " Required:
        set runtimepath+=~/.vim/bundle/neobundle.vim/

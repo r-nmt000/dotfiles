@@ -21,7 +21,6 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 0.1, for Vim 7.2
 "=============================================================================
 
 let s:save_cpo = &cpo
@@ -43,7 +42,7 @@ function! neobundle#installer#update(bundles)
 
   call neobundle#commands#helptags(all_bundles)
   call s:reload(filter(copy(a:bundles),
-        \ 'v:val.sourced && !v:val.disabled'))
+        \ "v:val.sourced && !v:val.disabled && v:val.rtp != ''"))
 
   call s:save_install_info(all_bundles)
 
@@ -57,6 +56,14 @@ function! neobundle#installer#update(bundles)
 endfunction
 
 function! neobundle#installer#build(bundle)
+  if !empty(a:bundle.build_commands)
+        \ && neobundle#config#check_commands(a:bundle.build_commands)
+      call neobundle#installer#log(
+            \ printf('[neobundle/install] |%s| ' .
+            \        'Build dependencies not met. Skipped', a:bundle.name))
+      return 0
+  endif
+
   " Environment check.
   let build = get(a:bundle, 'build', {})
   if neobundle#util#is_windows() && has_key(build, 'windows')
@@ -65,6 +72,9 @@ function! neobundle#installer#build(bundle)
     let cmd = build.mac
   elseif neobundle#util#is_cygwin() && has_key(build, 'cygwin')
     let cmd = build.cygwin
+  elseif !neobundle#util#is_windows() && has_key(build, 'linux')
+        \ && !executable('gmake')
+    let cmd = build.linux
   elseif !neobundle#util#is_windows() && has_key(build, 'unix')
     let cmd = build.unix
   elseif has_key(build, 'others')
@@ -119,6 +129,8 @@ function! neobundle#installer#reinstall(bundles)
     call call('neobundle#parser#bundle', [arg])
   endfor
 
+  call s:save_install_info(neobundle#config#get_neobundles())
+
   " Install.
   call neobundle#commands#install(0,
         \ join(map(copy(a:bundles), 'v:val.name')))
@@ -127,6 +139,8 @@ function! neobundle#installer#reinstall(bundles)
 endfunction
 
 function! neobundle#installer#get_reinstall_bundles(bundles)
+  call neobundle#installer#_load_install_info(a:bundles)
+
   let reinstall_bundles = filter(copy(a:bundles),
         \ "neobundle#config#is_installed(v:val.name)
         \  && v:val.normalized_name !=# 'neobundle' &&
@@ -136,8 +150,21 @@ function! neobundle#installer#get_reinstall_bundles(bundles)
         \     v:val.path ==# v:val.installed_path &&
         \     v:val.uri !=# v:val.installed_uri")
   if !empty(reinstall_bundles)
-    echomsg 'Reinstall bundles detected: '
-          \ string(map(copy(reinstall_bundles), 'v:val.name'))
+    call unite#util#print_error(
+          \ '[neobundle] Reinstall bundles are detected!')
+
+    for bundle in reinstall_bundles
+      echomsg printf('%s: %s -> %s',
+            \   bundle.name, bundle.installed_uri, bundle.uri)
+    endfor
+
+    let cwd = neobundle#util#substitute_path_separator(getcwd())
+    let warning_bundles = map(filter(copy(reinstall_bundles),
+        \     'v:val.path ==# cwd'), 'v:val.path')
+    if !empty(warning_bundles)
+      call neobundle#util#print_error('Warning: current directory is the
+            \ reinstall bundles directory! ' . string(warning_bundles))
+    endif
     let ret = confirm('Reinstall bundles now?', "yes\nNo", 2)
     redraw
     if ret != 1
@@ -151,8 +178,7 @@ endfunction
 function! neobundle#installer#get_sync_command(bang, bundle, number, max)
   let type = neobundle#config#get_types(a:bundle.type)
   if empty(type)
-    return ['', printf('(%'.len(a:max).'d/%d): |%s| %s',
-          \ a:number, a:max, a:bundle.name, 'Unknown Type')]
+    return ['E: Unknown Type', '']
   endif
 
   let is_directory = isdirectory(a:bundle.path)
@@ -174,8 +200,7 @@ endfunction
 function! neobundle#installer#get_revision_lock_command(bang, bundle, number, max)
   let type = neobundle#config#get_types(a:bundle.type)
   if empty(type)
-    return ['', printf('(%'.len(a:max).'d/%d): |%s| %s',
-          \ a:number, a:max, a:bundle.name, 'Unknown Type')]
+    return ['E: Unknown Type', '']
   endif
 
   let cmd = type.get_revision_lock_command(a:bundle)
@@ -184,25 +209,30 @@ function! neobundle#installer#get_revision_lock_command(bang, bundle, number, ma
     return ['', '']
   endif
 
-  let message = printf('(%'.len(a:max).'d/%d): |%s| %s',
-        \ a:number, a:max, a:bundle.name, cmd)
-
-  return [cmd, message]
+  return [cmd, '']
 endfunction
 
 function! neobundle#installer#get_revision_number(bundle)
   let cwd = getcwd()
+  let type = neobundle#config#get_types(a:bundle.type)
+
+  if !isdirectory(a:bundle.path)
+        \ || !has_key(type, 'get_revision_number_command')
+    return ''
+  endif
+
+  let cmd = type.get_revision_number_command(a:bundle)
+  if cmd == ''
+    return ''
+  endif
+
   try
-    let type = neobundle#config#get_types(a:bundle.type)
-
-    if !isdirectory(a:bundle.path)
-      return ''
-    endif
-
     call neobundle#util#cd(a:bundle.path)
 
-    return neobundle#util#system(
-          \ type.get_revision_number_command(a:bundle))
+    let rev = neobundle#util#system(cmd)
+
+    " If rev contains spaces, it is error message
+    return (rev !~ '\s') ? rev : ''
   finally
     if isdirectory(cwd)
       call neobundle#util#cd(cwd)
@@ -284,7 +314,7 @@ function! neobundle#installer#sync(bundle, context, is_unite)
   elseif cmd =~# '^E: '
     " Errored.
 
-    call neobundle#installer#log(
+    call neobundle#installer#update_log(
           \ printf('[neobundle/install] (%'.len(max).'d/%d): |%s| %s',
           \ num, max, a:bundle.name, 'Error'), a:is_unite)
     call neobundle#installer#error(cmd[3:], a:is_unite)
@@ -317,6 +347,21 @@ function! neobundle#installer#sync(bundle, context, is_unite)
           \ 'eof' : 0,
           \ 'start_time' : localtime(),
           \ }
+
+    if isdirectory(a:bundle.path)
+          \ && (a:bundle.rev != '' || !a:bundle.local)
+      let rev_save = a:bundle.rev
+      try
+        " Checkout HEAD revision.
+        let a:bundle.rev = ''
+
+        call neobundle#installer#lock_revision(
+              \ process, a:context, a:is_unite)
+      finally
+        let a:bundle.rev = rev_save
+      endtry
+    endif
+
     if neobundle#util#has_vimproc()
       let process.proc = vimproc#pgroup_open(vimproc#util#iconv(
             \            cmd, &encoding, 'char'), 0, 2)
@@ -359,9 +404,21 @@ function! neobundle#installer#check_output(context, process, is_unite)
   let max = a:context.source__max_bundles
   let bundle = a:process.bundle
 
-  " Lock revision.
-  call neobundle#installer#lock_revision(
-        \ a:process, a:context, a:is_unite)
+  if bundle.rev != '' || !a:context.source__bang
+    " Lock revision.
+    let rev_save = bundle.rev
+    try
+      if !a:context.source__bang && bundle.rev == ''
+        " Checkout install_rev revision.
+        let bundle.rev = bundle.install_rev
+      endif
+
+      call neobundle#installer#lock_revision(
+            \ a:process, a:context, a:is_unite)
+    finally
+      let bundle.rev = rev_save
+    endtry
+  endif
 
   let rev = neobundle#installer#get_revision_number(bundle)
 
@@ -378,11 +435,12 @@ function! neobundle#installer#check_output(context, process, is_unite)
   if is_failed || build_failed
     let message = printf('[neobundle/install] (%'.len(max).'d/%d): |%s| %s',
           \ num, max, bundle.name, 'Error')
-    call neobundle#installer#log(message, a:is_unite)
+    call neobundle#installer#update_log(message, a:is_unite)
     call neobundle#installer#error(bundle.path, a:is_unite)
 
     if build_failed
-      if confirm('Build failed. Uninstall "'.bundle.name.'" now?', "yes\nNo", 2) == 1
+      if confirm('Build failed. Uninstall "'
+            \ .bundle.name.'" now?', "yes\nNo", 2) == 1
         " Remove.
         call neobundle#commands#clean(1, bundle.name)
       endif
@@ -438,11 +496,6 @@ function! neobundle#installer#lock_revision(process, context, is_unite)
   let max = a:context.source__max_bundles
   let bundle = a:process.bundle
 
-  if bundle.rev == ''
-    " Skipped.
-    return 0
-  endif
-
   let bundle.new_rev = neobundle#installer#get_revision_number(bundle)
 
   let [cmd, message] =
@@ -459,12 +512,14 @@ function! neobundle#installer#lock_revision(process, context, is_unite)
     return -1
   endif
 
-  call neobundle#installer#log(
-        \ printf('[neobundle/install] (%'.len(max).'d/%d): |%s| %s',
-        \ num, max, bundle.name, 'Locked'), a:is_unite)
+  if bundle.rev != ''
+    call neobundle#installer#log(
+          \ printf('[neobundle/install] (%'.len(max).'d/%d): |%s| %s',
+          \ num, max, bundle.name, 'Locked'), a:is_unite)
 
-  call neobundle#installer#log(
-        \ '[neobundle/install] ' . message, a:is_unite)
+    call neobundle#installer#log(
+          \ '[neobundle/install] ' . message, a:is_unite)
+  endif
 
   let cwd = getcwd()
   try
@@ -504,12 +559,17 @@ function! s:save_install_info(bundles)
 
   call neobundle#util#writefile('install_info',
         \ [s:install_info_version, string(s:install_info)])
+
+  " Save lock file
+  call s:save_lockfile(a:bundles)
 endfunction
 
 function! neobundle#installer#_load_install_info(bundles)
   let install_info_path =
         \ neobundle#get_neobundle_dir() . '/.neobundle/install_info'
   if !exists('s:install_info')
+    call s:source_lockfile()
+
     let s:install_info = {}
 
     if filereadable(install_info_path)
@@ -547,19 +607,15 @@ function! s:get_skipped_message(number, max, bundle, prefix, message)
 endfunction
 
 function! neobundle#installer#log(msg, ...)
-  let is_unite = get(a:000, 0, 0)
   let msg = type(a:msg) == type([]) ?
         \ a:msg : split(a:msg, '\n')
   call extend(s:log, msg)
-
-  if !(&filetype == 'unite' || is_unite)
-    call neobundle#util#redraw_echo(msg)
-  endif
 
   call s:append_log_file(msg)
 endfunction
 
 function! neobundle#installer#update_log(msg, ...)
+  let is_unite = get(a:000, 0, 0)
   let msgs = []
   for msg in type(a:msg) == type([]) ?
         \ a:msg : [a:msg]
@@ -570,24 +626,22 @@ function! neobundle#installer#update_log(msg, ...)
           \ map(msg_nrs[1:], "source_name . v:val")
   endfor
 
-  call call('neobundle#installer#log', [msgs] + a:000)
+  if !(&filetype == 'unite' || is_unite)
+    call neobundle#util#redraw_echo(msg)
+  endif
+
+  call neobundle#installer#log(msgs)
 
   let s:updates_log += msgs
 endfunction
 
 function! neobundle#installer#error(msg, ...)
-  let is_unite = get(a:000, 0, 0)
   let msg = type(a:msg) == type([]) ?
         \ a:msg : split(a:msg, '\r\?\n')
   call extend(s:log, msg)
   call extend(s:updates_log, msg)
 
-  if &filetype == 'unite' || is_unite
-    call unite#print_error(msg)
-  else
-    call neobundle#util#print_error(msg)
-  endif
-
+  call neobundle#util#print_error(msg)
   call s:append_log_file(msg)
 endfunction
 
@@ -622,6 +676,12 @@ function! neobundle#installer#clear_log()
   let s:updates_log = []
 endfunction
 
+function! neobundle#installer#get_progress_message(bundle, number, max)
+  return printf('(%'.len(a:max).'d/%d) [%-20s] %s',
+          \ a:number, a:max,
+          \ repeat('=', (a:number*20/a:max)), a:bundle.name)
+endfunction
+
 function! neobundle#installer#get_tags_info()
   let path = neobundle#get_neobundle_dir() . '/.neobundle/tags_info'
   if !filereadable(path)
@@ -631,15 +691,33 @@ function! neobundle#installer#get_tags_info()
   return readfile(path)
 endfunction
 
+function! s:save_lockfile(bundles) "{{{
+  let path = neobundle#get_neobundle_dir() . '/NeoBundle.lock'
+  let dir = fnamemodify(path, ':h')
+  if !isdirectory(dir)
+    call mkdir(dir, 'p')
+  endif
+
+  return writefile(map(filter(map(copy(a:bundles),
+        \ '[v:val.name, neobundle#installer#get_revision_number(v:val)]'),
+        \ "v:val[1] != '' && v:val[1] !~ '\s'"),
+        \ "printf('NeoBundleLock %s %s',
+        \          escape(v:val[0], ' \'), v:val[1])"), path)
+endfunction"}}}
+
+function! s:source_lockfile() "{{{
+  let path = neobundle#get_neobundle_dir() . '/NeoBundle.lock'
+  if filereadable(path)
+    execute 'source' fnameescape(path)
+  endif
+endfunction"}}}
+
 function! s:reload(bundles) "{{{
   if empty(a:bundles)
     return
   endif
 
   call filter(copy(a:bundles), 'neobundle#config#rtp_add(v:val)')
-
-  " Call hooks.
-  call neobundle#call_hook('on_source', a:bundles)
 
   silent! runtime! ftdetect/**/*.vim
   silent! runtime! after/ftdetect/**/*.vim

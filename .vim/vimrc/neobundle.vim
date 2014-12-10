@@ -5,7 +5,9 @@ filetype off
 
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/NeoBundle.vim'
+  call neobundle#end()
 endif
 """""""""""""
 "   basic   "
@@ -24,18 +26,11 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neomru.vim'
-if has('lua') && v:version >= 703 && has('patch885')
+if has('lua') &&( (v:version >= 703 && has('patch885')) || v:version >= 704)
   NeoBundleLazy "Shougo/neocomplete.vim", {
         \ "autoload": {
         \   "insert": 1,
         \ }}
-  let g:neocomplete#enable_at_startup = 1
-  let s:hooks = neobundle#get_hooks("neocomplete.vim")
-  function! s:hooks.on_source(bundle)
-    let g:acp_enableAtStartup = 0
-    let g:neocomplet#enable_smart_case = 1
-    " NeoCompleteEnable
-  endfunction
 else
   NeoBundleLazy "Shougo/neocomplcache.vim", {
         \ "autoload": {
@@ -69,6 +64,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'sudo.vim'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundleLazy 'majutsushi/tagbar', {
       \ "autload": {
