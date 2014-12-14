@@ -66,6 +66,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'stephpy/vim-yaml'
 NeoBundleLazy 'majutsushi/tagbar', {
       \ "autload": {
       \   "commands": ["TagbarToggle"],
