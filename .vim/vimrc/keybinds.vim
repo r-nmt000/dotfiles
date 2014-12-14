@@ -19,14 +19,43 @@ nnoremap cw ciw
 "go to the first non-blank character in line 
 nnoremap 0 ^
 "exchange ; and :
-" nnoremap ; :
-" nnoremap : ;
+nnoremap ; :
+nnoremap : ;
 "easy Esc
 imap <C-j> <Esc>
 "move to other windows
 nnoremap , <C-w>h
 nnoremap . <C-w>l
 
+"#################
+"##   window    ##
+"#################
+
+"split window
+nnoremap ss <C-w>s
+nnoremap sv <C-w>v
+"move between windows 
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sw <C-w>w
+"move windows 
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sW <C-w>W
+"change window size
+nnoremap s= <C-w>=
+call submode#enter_with('windowsize', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('windowsize', 'n', '', 's<', '<C-w><')
+call submode#enter_with('windowsize', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('windowsize', 'n', '', 's-', '<C-w>-')
+call submode#map('windowsize', 'n', '', '>', '<C-w>>')
+call submode#map('windowsize', 'n', '', '<', '<C-w><')
+call submode#map('windowsize', 'n', '', '+', '<C-w>+')
+call submode#map('windowsize', 'n', '', '-', '<C-w>-')
 "#################
 "##     tab     ##
 "#################
@@ -58,20 +87,13 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2  "常にタブラインを表示
 
-" The prefix key.
-nnoremap    [Tab] <Nop>
-nmap        t [Tab]
-" Tab jump
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
-endfor
-" t1で1番左のタブ、t2で1番左から2番目のタブにジャンプ
 
-" tn 新しいタブを一番右に作る
-nnoremap <silent> [Tab]n :tablast <bar> tabnew<CR>
-" tx タブを閉じる
-nnoremap <silent> [Tab]x :tabclose<CR>
-" tl 次のタブ
-nnoremap <silent> [Tab]l :tabnext<CR>
-" th 前のタブ
-nnoremap <silent> [Tab]h :tabprevious<CR>
+" sc 新しいタブを一番右に作る
+nnoremap <silent> sc :tablast <bar> tabnew<CR>
+" sx タブを閉じる
+nnoremap <silent> sx :tabclose<CR>
+
+call submode#enter_with('tabmove', 'n', '', 'sp', 'gt')
+call submode#enter_with('tabmove', 'n', '', 'sn', 'gT')
+call submode#map('tabmove', 'n', '', 'p', 'gt')
+call submode#map('tabmove', 'n', '', 'n', 'gT')
