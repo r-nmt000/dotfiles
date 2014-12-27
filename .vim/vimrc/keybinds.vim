@@ -1,4 +1,6 @@
 "#####Keybinds#####
+"bind esc to easy keybind
+inoremap <C-j> <ESC>
 "move cursor on logical line basis
 nnoremap j gj
 nnoremap k gk
@@ -88,12 +90,12 @@ let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2  "常にタブラインを表示
 
 
-" sc 新しいタブを一番右に作る
-nnoremap <silent> sc :tablast <bar> tabnew<CR>
-" sx タブを閉じる
-nnoremap <silent> sx :tabclose<CR>
+" 新しいタブを一番右に作る
+nnoremap <silent> tn :tablast <bar> tabnew<CR>
+" タブを閉じる
+nnoremap <silent> tx :tabclose<CR>
 
-call submode#enter_with('tabmove', 'n', '', 'sp', 'gt')
-call submode#enter_with('tabmove', 'n', '', 'sn', 'gT')
-call submode#map('tabmove', 'n', '', 'p', 'gt')
-call submode#map('tabmove', 'n', '', 'n', 'gT')
+call submode#enter_with('tabmove', 'n', '', 'tp', 'gt')
+call submode#enter_with('tabmove', 'n', '', 'th', 'gT')
+call submode#map('tabmove', 'n', '', 'l', 'gt')
+call submode#map('tabmove', 'n', '', 'h', 'gT')
