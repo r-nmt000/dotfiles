@@ -36,6 +36,8 @@ nnoremap . <C-w>l
 "split window
 nnoremap ss <C-w>s
 nnoremap sv <C-w>v
+"delete window
+nnoremap sx <C-w>c
 "move between windows 
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
