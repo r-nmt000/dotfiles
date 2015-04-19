@@ -36,6 +36,18 @@ export LANG=ja_JP.UTF-8
 setopt auto_cd
 #cdの履歴保存
 setopt auto_pushd
+#同じディレクトリは追加しない
+setopt pushd_ignore_dups
+#--- zsh 用の設定 ---
+. /usr/local/etc/autojump.zsh
+#
+##--- cd 時の仕掛け ---
+function precmd () {
+  pwd=`pwd`
+  echo "[^[[35m$pwd^[[m]"
+  autojump -a $pwd
+  echo $pwd > ~/.curdir
+}
 #コマンドの訂正
 setopt correct
 #リストをつめて表示
@@ -105,3 +117,6 @@ case ${OSTYPE} in
     ;;
 esac
 
+
+# 新規にzshを開いたら前回の作業ディレクトリに移動
+cd `cat ~/.curdir`

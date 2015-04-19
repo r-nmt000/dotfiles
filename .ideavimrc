@@ -14,8 +14,8 @@ set hlsearch
 "スクロール時に表示を10行確保
 set scrolloff=10
 
-"JIS 配列 C-[ で Esc
-inoremap <C-[> <Esc>
+"JIS 配列 C-j で Esc
+inoremap <C-j> <Esc>
  
 "x キー削除でデフォルトレジスタに入れない
 nnoremap x "_x
@@ -63,26 +63,44 @@ inoremap <C-w> <C-o>db
   " インサートモードから抜けると自動的にIMEをオフにする
   set iminsert=2
    
-   "tab/indentの設定
-   set shellslash
-   set expandtab "タブ入力を複数の空白入力に置き換える
-   set tabstop=2 "画面上でタブ文字が占める幅
-   set shiftwidth=2 "自動インデントでずれる幅
-   set softtabstop=2 "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-   set autoindent "改行時に前の行のインデントを継続する
-   set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-   "タブの設定
-   " The prefix key.
-   nnoremap    [Tag]   <Nop>
-   nmap  t [Tag]
-   " Tab jump
-   " " tx タブを閉じる
-   map <silent> [Tag]x :close<CR>
-   map <silent> [Tag]c :close<CR>
-   map <silent> [Tag]h gT
-   map <silent> [Tag]l gt
-    
-     
-     " 入力モード中に素早くJJと入力した場合はESCとみなす
-     inoremap jj <Esc>
 
+"#################
+"##   window    ##
+"#################
+
+"split window
+nnoremap ss <C-w>s
+nnoremap sv <C-w>v
+"delete window
+nnoremap sx <C-w>c
+"move between windows 
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sw <C-w>w
+"move windows 
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sW <C-w>W
+"change window size
+nnoremap s= <C-w>=
+call submode#enter_with('windowsize', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('windowsize', 'n', '', 's<', '<C-w><')
+call submode#enter_with('windowsize', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('windowsize', 'n', '', 's-', '<C-w>-')
+call submode#map('windowsize', 'n', '', '>', '<C-w>>')
+call submode#map('windowsize', 'n', '', '<', '<C-w><')
+call submode#map('windowsize', 'n', '', '+', '<C-w>+')
+call submode#map('windowsize', 'n', '', '-', '<C-w>-')
+
+
+" 新しいタブを一番右に作る
+nnoremap <silent> tn :tablast <bar> tabnew<CR>
+" タブを閉じる
+nnoremap <silent> tx :tabclose<CR>
+
+nnoremap <silent> tl gt<CR>
+nnoremap <silent> th gT<CR>
