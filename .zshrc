@@ -40,14 +40,12 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 #--- zsh 用の設定 ---
 . /usr/local/etc/autojump.zsh
-#
-##--- cd 時の仕掛け ---
-function precmd () {
-  pwd=`pwd`
-  echo "[^[[35m$pwd^[[m]"
-  autojump -a $pwd
-  echo $pwd > ~/.curdir
-}
+
+alias j="autojump"
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
+
 #コマンドの訂正
 setopt correct
 #リストをつめて表示
