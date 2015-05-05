@@ -72,7 +72,8 @@ eval "$(pyenv init -)"
 ########################
 
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
-alias grep="grep --color -n -I"
+# -i 大文字小文字を無視, 拡張正規表現を使う
+alias grep="grep --color -n -I -i -E"
 
 # tree
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
