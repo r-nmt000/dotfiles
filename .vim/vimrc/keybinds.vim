@@ -17,7 +17,8 @@ nnoremap vx vawxh
 nnoremap yw yiw 
 nnoremap dw diw
 nnoremap cw ciw
-
+"search with regular expression
+nmap / /\v
 "go to the first non-blank character in line 
 nnoremap 0 ^
 "exchange ; and :
