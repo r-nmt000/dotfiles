@@ -2,6 +2,7 @@
   path = .gitconfig.local
 [user]
   name = Ryusuke Nomoto
+	email = r.nmt000@gmail.com
 ; email= r.nmt000@gmail.com
 ; [github]
 ;   user = r-nmt000
