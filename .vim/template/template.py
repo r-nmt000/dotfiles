@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 def main():
-  pass
+    pass
 
 if __name__ == '__main__':
-  main()
+    main()
