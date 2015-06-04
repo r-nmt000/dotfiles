@@ -68,6 +68,7 @@ NeoBundle 'sudo.vim'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-smartinput'
 NeoBundleLazy 'majutsushi/tagbar', {
   \ "autload": {
     \   "commands": ["TagbarToggle"],
