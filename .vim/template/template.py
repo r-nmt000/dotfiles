@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 def main():
-  pass
+    pass
 
 if __name__ == '__main__':
-  main()
+    main()
