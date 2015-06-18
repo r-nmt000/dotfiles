@@ -97,8 +97,6 @@ case ${OSTYPE} in
     PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
     #
 
-    #alias, path
-    alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 
     if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
