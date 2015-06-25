@@ -6,16 +6,58 @@ set smartcase
 
 
 "#####Keybinds#####
+"bind esc to easy keybind
+inoremap <C-j> <ESC>
+
 "smooth scroll
 noremap <C-u> <C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>
 noremap <C-d> <C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>
+
 "centering next search result by n, N
 nnoremap n nzz
 nnoremap N Nzz
+
 "cut and yank a word
 nnoremap vx vawxh 
 nnoremap vy vawy
-"move to other windows
-nnoremap , <C-w>h
-nnoremap . <C-w>l
+nnoremap dw diw
+nnoremap cw ciw
+
+"exchange ; and :
+nnoremap ; :
+nnoremap : ;
+
+
+
+"split window
+nnoremap ss <C-w>s
+nnoremap sv <C-w>v
+
+"delete window
+nnoremap sx <C-w>c
+
+"move between windows 
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sw <C-w>w
+
+"move windows 
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sW <C-w>W
+
+"move between tabs
+nnoremap <silent> tn :tablast <bar> tabnew<CR>
+"close tabs
+nnoremap <silent> tx :tabclose<CR>
+
+nnoremap  tl gt
+nnoremap  th gT
+
+
+
 

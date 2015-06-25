@@ -24,9 +24,6 @@ nnoremap 0 ^
 "exchange ; and :
 nnoremap ; :
 nnoremap : ;
-"move to other windows
-nnoremap , <C-w>h
-nnoremap . <C-w>l
 
 "#################
 "##   window    ##
