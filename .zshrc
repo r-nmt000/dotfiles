@@ -81,6 +81,8 @@ alias tree="tree -NC" # N: 文字化け対策, C:色をつける
 # tmuxで日本語を使えるように
 alias tmux="tmux -u"
 
+# git関連のエイリアス
+alias gs="git status"
 #settings for virualenv(Python)
 export WORKON_HOME=$HOME/.virtualenvs
 
