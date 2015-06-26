@@ -39,12 +39,12 @@ setopt auto_pushd
 #同じディレクトリは追加しない
 setopt pushd_ignore_dups
 #--- zsh 用の設定 ---
-. /usr/local/etc/autojump.zsh
-
-alias j="autojump"
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+# . /usr/local/etc/autojump.zsh
+#
+# alias j="autojump"
+# if [ -f `brew --prefix`/etc/autojump ]; then
+#   . `brew --prefix`/etc/autojump
+# fi
 
 #コマンドの訂正
 setopt correct

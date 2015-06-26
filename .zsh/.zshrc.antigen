@@ -13,7 +13,7 @@ antigen-bundle brew
 antigen-bundle pip
 antigen-bundle django
 antigen-bundle virtualenv
-antigen-bundle virtualenvwrapper
+# antigen-bundle virtualenvwrapper
 antigen-bundle sbt
 #syntax highlighting bundle
 antigen-bundle zsh-users/zsh-syntax-highlighting
