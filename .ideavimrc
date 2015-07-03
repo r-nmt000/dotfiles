@@ -1,3 +1,13 @@
+"コロンとセミコロンを交換
+nnoremap ; :
+nnoremap : ;
+
+"cut, yank, delete a word
+nnoremap vx vawxh 
+nnoremap yw yiw 
+nnoremap dw diw
+nnoremap cw ciw
+
 "検索をファイルの先頭へ循環しない
 set nowrapscan
 
