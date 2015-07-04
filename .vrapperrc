@@ -20,6 +20,7 @@ nnoremap N Nzz
 "cut and yank a word
 nnoremap vx vawxh 
 nnoremap vy vawy
+nnoremap yw yiw 
 nnoremap dw diw
 nnoremap cw ciw
 

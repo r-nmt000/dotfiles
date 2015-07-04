@@ -54,8 +54,10 @@ setopt list_packed
 setopt notify
 
 #Term2のタブ名を変更する
+DISABLE_AUTO_TITLE="true"
 function title {
   echo -ne "\033]0;"$*"\007"
+  # echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
 }
 
 ########################
