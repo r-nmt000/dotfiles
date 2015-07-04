@@ -1,28 +1,29 @@
 [include]
-  path = .gitconfig.local
+    path = .gitconfig.local
 [user]
-  name = Ryusuke Nomoto
-	email = r.nmt000@gmail.com
+    name = Ryusuke Nomoto
+    email = r.nmt000@gmail.com
 ; email= r.nmt000@gmail.com
 ; [github]
 ;   user = r-nmt000
 ;   token = xxxxxxxx
 [alias]
-  ignore = !"f() { local s=$1; shift; \
-    while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
-    curl \"https://www.gitignore.io/api/$s\"; }; f"
-
+    ignore = !"f() { local s=$1; shift; \
+        while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
+        curl \"https://www.gitignore.io/api/$s\"; }; f"
+    st = status
+    cm = commit
 [core]
-  excludesfile = .gitignore
-  editor = /usr/bin/vim
+    excludesfile = .gitignore
+    editor = /usr/bin/vim
 [push]
-  default = simple
+    default = simple
 [merge]
-  tool = vimdiff3
-  keepBackup = false
+    tool = vimdiff3
+    keepBackup = false
 [mergetool]
-  trustExitCode = false
-  keepTemporaries = false
-  keepBackup = false
+    trustExitCode = false
+    keepTemporaries = false
+    keepBackup = false
 [mergetool "vimdiff3"]
-  cmd = git_merge_wrapper3.sh \"$MERGED \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+    cmd = git_merge_wrapper3.sh \"$MERGED \"$LOCAL\" \"$BASE\" \"$REMOTE\"
