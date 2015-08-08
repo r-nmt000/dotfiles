@@ -12,9 +12,9 @@ syntax on "color code
 scriptencoding utf-8
 set encoding=utf-8
 set expandtab "convert tab to space
-set tabstop=4 "2 spaces for indent
-set softtabstop=4 "2 spaces when tab is inputed
-set shiftwidth=4 "insert 2 spaces when you start a new line
+set tabstop=4 "4 spaces for indent
+set softtabstop=4 "4 spaces when tab is inputed
+set shiftwidth=4 "insert 4 spaces when you start a new line
 set smartindent "indent automatically
 "highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 "highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=darkgrey "hightlight current line by color
