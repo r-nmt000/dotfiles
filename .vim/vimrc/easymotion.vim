@@ -2,7 +2,7 @@ let g:EasyMotion_leader_key = '<Space>'
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
 " map h <Plug>(easymotion-iskeyword-bd-w)
-map <Space>h <Plug>(easymotion-bd-w)
+map <C-k> <Plug>(easymotion-bd-w)
 map h <Left>
 " Jump to first match with enter & space
 let g:EasyMotion_enter_jump_first = 1

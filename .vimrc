@@ -5,7 +5,7 @@ set number "show line numbers
 set title "show the file name you are editing
 set showmatch "highlight a corespond pair of bracket
 set statusline=%F%r%h%=
-set cursorline "highlight current line
+" set cursorline "highlight current line
 syntax on "color code
 
 
