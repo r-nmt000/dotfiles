@@ -1,0 +1,23 @@
+source ~/.zplug/init.zsh
+
+# Define plugins 
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions", nice:-20
+zplug "zsh-users/zsh-syntax-highlighting", nice:19
+zplug "zsh-users/zsh-autosuggestions"
+zplug "plugins/git", from:oh-my-zsh
+# Load it for zsh-theme
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
+zplug "r-nmt000/zsh-theme", use:"themes/nomoto.zsh-theme"
+
+# Install defined plugins
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
+

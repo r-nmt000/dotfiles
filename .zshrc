@@ -1,9 +1,14 @@
 #folkしたoh-my-zshを使うための設定
 # export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
-export ANTIGEN_DEFAULT_REPO_URL="https://github.com/robbyrussell/oh-my-zsh.git"
+# export ANTIGEN_DEFAULT_REPO_URL="https://github.com/robbyrussell/oh-my-zsh.git"
 #read settings for antigen
-if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
-   source ~/.zsh/.zshrc.antigen
+# if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
+#    source ~/.zsh/.zshrc.antigen
+# fi
+
+# Read settings for zplug
+if [ -f $HOME/.zsh/.zshrc.zplug ]; then 
+   source ~/.zsh/.zshrc.zplug
 fi
 
 
@@ -63,11 +68,11 @@ function title {
 ########################
 #       pyenv          #
 ########################
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -n ${PYENV_ROOT} ]; then
-  path=(${PYENV_ROOT}/bin ${PYENV_ROOT}/shims ${path}) 
-fi
-eval "$(pyenv init -)"
+# export PYENV_ROOT="${HOME}/.pyenv"
+# if [ -n ${PYENV_ROOT} ]; then
+#   path=(${PYENV_ROOT}/bin ${PYENV_ROOT}/shims ${path}) 
+# fi
+# eval "$(pyenv init -)"
 
 ########################
 #       alias          #
@@ -99,22 +104,11 @@ case ${OSTYPE} in
     #read setting for rbenv
     eval "$(rbenv init - zsh)"
     PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting
-    #
-
-
-
-    if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-      source /usr/local/bin/virtualenvwrapper.sh
-    fi
     ;;
 
 
   linux*)
     #Settings for Linux
-
-    if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-      source /usr/bin/virtualenvwrapper.sh
-    fi
     ;;
 esac
 

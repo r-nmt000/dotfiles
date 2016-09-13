@@ -1,7 +1,11 @@
 DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh .gitconfig .tmux.conf .ideavimrc
 
 .PHONY: all clean
-all: zsh vim git vrapper tmux ideavim submodule link-shellscript
+all: install-package-manager zsh vim git vrapper tmux ideavim submodule link-shellscript
+
+install-package-manager:
+	@echo "Install package managers if not exist"
+	@./install_plugin_manager.sh
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -20,7 +24,6 @@ submodule: get-modules
 link-shellscript:
 	@echo "Create symlink bin to /usr/local/bin"
 	@./make_symlink.sh
-
 
 clean: $(foreach f, $(DOT_FILES), unlink-dot-file-$(f))
 
