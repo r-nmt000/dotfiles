@@ -1,11 +1,7 @@
 DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh .gitconfig .tmux.conf .ideavimrc
 
 .PHONY: all clean
-all: install-package-manager zsh vim git vrapper tmux ideavim submodule link-shellscript
-
-install-package-manager:
-	@echo "Install package managers if not exist"
-	@./install_plugin_manager.sh
+all: zsh vim git vrapper tmux ideavim submodule link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
