@@ -24,7 +24,6 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neomru.vim'
 if has('lua') &&( (v:version >= 703 && has('patch885')) || v:version >= 704)
   NeoBundleLazy "Shougo/neocomplete.vim", {
@@ -46,7 +45,6 @@ else
 endif
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tomtom/tcomment_vim'
@@ -54,43 +52,14 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'thinca/vim-template'
-NeoBundle 'dhalter/jedi-vim'
 NeoBundle 'vim-scripts/xptemplate'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-smartinput'
-NeoBundleLazy 'majutsushi/tagbar', {
-  \ "autload": {
-    \   "commands": ["TagbarToggle"],
-  \ },
-  \ "build": {
-  \   "mac": "brew install ctags",
-  \ }}
-nmap <Space>t :TagbarToggle<CR>
-"""""""""""
-" Python  "
-"""""""""""
-" For reading Django with Vim properly
-NeoBundleLazy "lambdalisue/vim-django-support", {
-  \ "autoload": {
-  \   "filetypes": ["python", "python3", "djangohtml"]
-  \ }}
-" For managing virtualenv with Vim properly
-NeoBundleLazy "jmcantrell/vim-virtualenv", {
-  \ "autoload": {
-  \   "filetypes": ["python", "python3", "djangohtml"]
-  \ }}
-
 
 " others
 NeoBundle 'gist:r-nmt000/8648309', {
