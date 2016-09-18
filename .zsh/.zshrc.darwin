@@ -1,0 +1,3 @@
+# Read settings for rbenv
+eval "$(rben init -zsh)"
+PATH=$PATH:$HOME/rvm/bin # Add RVM to PATH for scripting

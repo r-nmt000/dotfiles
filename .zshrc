@@ -100,6 +100,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 case ${OSTYPE} in
   darwin*)
     #Settings for Mac
+    source ~/.zsh/.zshrc.darwin
 
     #read setting for rbenv
     eval "$(rbenv init - zsh)"
@@ -109,6 +110,7 @@ case ${OSTYPE} in
 
   linux*)
     #Settings for Linux
+    source ~/.zsh/.zshrc.linux
     ;;
 esac
 
