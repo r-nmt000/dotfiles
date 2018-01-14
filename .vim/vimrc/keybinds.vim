@@ -21,9 +21,6 @@ nnoremap cw ciw
 nmap / /\v
 "go to the first non-blank character in line 
 nnoremap 0 ^
-"exchange ; and :
-nnoremap ; :
-nnoremap : ;
 
 "#################
 "##   window    ##
