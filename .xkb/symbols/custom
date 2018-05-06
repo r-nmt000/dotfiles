@@ -1,0 +1,10 @@
+partial modifier_keys
+xkb_symbols "swapkeys" {
+  replace key <LCTL>  { [ Caps_Lock ] };
+  replace key <CAPS> { [ Control_L ] };
+};
+xkb_symbols "changekeys" {
+  replace key <AE02>  { [ 2, at ] };
+  replace key <AD11>  { [ apostrophe, quotedbl ] };
+  replace key <AE07>  { [ 7, grave ] };
+};

@@ -1,7 +1,16 @@
 ﻿dotfiles
 ========
 
-my dotfiles.
+You can install and build your favarite tools easily.
+
+This dotfiles consists of below configurations.
+
+* zsh
+* vim
+* tmux
+* ideavim
+* xkb
+  * Linux keybind config
 
 ## Requirements
 * `zsh`:  v5.0+
@@ -42,8 +51,3 @@ vim .vim/vimrc/neobundle.vim
 ```
 
 **Done!!**
-
-
-##ATTENTION
-
-* Make sure import eclipse_keybinds.epf manually.

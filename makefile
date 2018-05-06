@@ -1,7 +1,7 @@
 DOT_FILES = .zshrc .vimrc .vrapperrc .vim .zsh .gitconfig .tmux.conf .ideavimrc
 
 .PHONY: all clean
-all: zsh vim git vrapper tmux ideavim submodule link-shellscript
+all: zsh vim git vrapper tmux ideavim xkb submodule link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -14,6 +14,8 @@ vrapper: $(foreach f, $(filter .vrapper%, $(DOT_FILES)), link-dot-file-$(f))
 tmux: $(foreach f, $(filter .tmux.conf, $(DOT_FILES)), link-dot-file-$(f))
 
 ideavim: $(foreach f, $(filter .ideavimrc, $(DOT_FILES)), link-dot-file-$(f))
+
+xkb: $(foreach f, $(filter .xkb, $(DOT_FILES)), link-dot-file-$(f))
 
 submodule: get-modules
 
