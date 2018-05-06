@@ -7,8 +7,8 @@ my dotfiles.
 * `zsh`:  v5.0+
 * `git`:  v2.2+
 * `vim`:  v7.4+
-* `zplug`: v2.1.0
-* `awk`: An AWK variant that is **not** mawk
+* `zplug`: v2.1.0+
+* `awk`: **NOT** mawk
 
 ## Installation
 ### 1. Clone this repository
