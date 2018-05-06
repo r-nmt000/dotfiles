@@ -1,7 +1,6 @@
 partial modifier_keys
 xkb_symbols "swapkeys" {
-  replace key <LCTL>  { [ Caps_Lock ] };
-  replace key <CAPS> { [ Control_L ] };
+  replace key <CAPS> { [ Control_R ] };
 };
 xkb_symbols "changekeys" {
   replace key <AE02>  { [ 2, at ] };
