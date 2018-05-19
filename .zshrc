@@ -34,7 +34,6 @@ compinit
 
 
 
-
 #zshの言語設定
 export LANG=ja_JP.UTF-8
 #cd入力しないでcd
@@ -43,6 +42,8 @@ setopt auto_cd
 setopt auto_pushd
 #同じディレクトリは追加しない
 setopt pushd_ignore_dups
+# cdしたあとに自動ls
+function chpwd() { ls }
 #--- zsh 用の設定 ---
 # . /usr/local/etc/autojump.zsh
 #
