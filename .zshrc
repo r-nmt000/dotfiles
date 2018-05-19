@@ -44,13 +44,14 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 # cdしたあとに自動ls
 function chpwd() { ls }
-#--- zsh 用の設定 ---
-# . /usr/local/etc/autojump.zsh
-#
-# alias j="autojump"
-# if [ -f `brew --prefix`/etc/autojump ]; then
-#   . `brew --prefix`/etc/autojump
-# fi
+
+# zshでautojumpを使えるようにする
+. /usr/share/autojump/autojump.zsh
+function precmd() {
+    pwd=`pwd`
+    autojump -a $pwd
+    echo $pwd > ~/.curdir
+}
 
 #コマンドの訂正
 setopt correct
