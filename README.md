@@ -14,6 +14,7 @@ This dotfiles consists of below configurations.
 
 ## Requirements
 * `zsh`:  v5.0+
+  * `autojump`
 * `git`:  v2.2+
 * `vim`:  v7.4+
 * `zplug`: v2.1.0+
