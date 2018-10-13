@@ -47,6 +47,7 @@ function chpwd() { ls }
 
 # zshでautojumpを使えるようにする
 . /usr/share/autojump/autojump.zsh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 function precmd() {
     pwd=`pwd`
     autojump -a $pwd
