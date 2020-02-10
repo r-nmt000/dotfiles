@@ -52,3 +52,16 @@ vim .vim/vimrc/neobundle.vim
 ```
 
 **Done!!**
+
+### 5. Setup iTerm2
+
+1. Open iTerm2 Preferences
+2. Open Profiles tab
+3. Press + button and create new config
+4. Select `Window`
+  - Tweek `Transparency`
+5. Select `Colors`
+  - Go [this page](https://gist.github.com/luan/6362811) and download color scheme
+  - Import it
+
+
