@@ -17,7 +17,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   " Toml file that includes plugins
-  let g:rc_dir    = expand('~/.vim/vimrc')
+  let g:rc_dir    = expand('~/.config/nvim/vimrc')
   let s:toml      = g:rc_dir . '/dein.toml'
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
@@ -38,7 +38,7 @@ endif
 filetype plugin indent on
 
 "###Interface###
-set runtimepath+=~/.vim/
+set runtimepath+=~/.config/nvim
 runtime! vimrc/*.vim
 set number "show line numbers
 set title "show the file name you are editing
