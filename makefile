@@ -1,13 +1,11 @@
-DOT_FILES = .zshrc .config .vim .zsh .gitconfig .tmux.conf .ideavimrc
+DOT_FILES = .zshrc .config .zsh .gitconfig .tmux.conf .ideavimrc
 
 .PHONY: all clean
-all: zsh vim config git tmux ideavim xkb link-shellscript
+all: zsh vim git tmux ideavim xkb link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
-vim: $(foreach f, $(filter .vim%, $(DOT_FILES)), link-dot-file-$(f))
-
-config: $(foreach f, $(filter .config%, $(DOT_FILES)), link-dot-file-$(f))
+vim: $(foreach f, $(filter .config%, $(DOT_FILES)), link-dot-file-$(f))
 
 git: $(foreach f, $(filter .gitconfig, $(DOT_FILES)), link-dot-file-$(f))
 
