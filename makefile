@@ -1,11 +1,13 @@
-DOT_FILES = .zshrc .vimrc .vim .zsh .gitconfig .tmux.conf .ideavimrc
+DOT_FILES = .zshrc .config .vim .zsh .gitconfig .tmux.conf .ideavimrc
 
 .PHONY: all clean
-all: zsh vim git tmux ideavim xkb submodule link-shellscript
+all: zsh vim config git tmux ideavim xkb link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
 vim: $(foreach f, $(filter .vim%, $(DOT_FILES)), link-dot-file-$(f))
+
+config: $(foreach f, $(filter .config%, $(DOT_FILES)), link-dot-file-$(f))
 
 git: $(foreach f, $(filter .gitconfig, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -14,8 +16,6 @@ tmux: $(foreach f, $(filter .tmux.conf, $(DOT_FILES)), link-dot-file-$(f))
 ideavim: $(foreach f, $(filter .ideavimrc, $(DOT_FILES)), link-dot-file-$(f))
 
 xkb: $(foreach f, $(filter .xkb, $(DOT_FILES)), link-dot-file-$(f))
-
-submodule: get-modules
 
 link-shellscript:
 	@echo "Create symlink bin to /usr/local/bin"
@@ -30,9 +30,4 @@ link-dot-file-%: %
 unlink-dot-file-%: %
 	@echo "Remove Symlink $(HOME)/$<"
 	@$(RM) $(HOME)/$<
-
-get-modules:
-	@echo "install submodules"
-	@git submodule init
-	@git submodule update
 
