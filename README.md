@@ -42,15 +42,15 @@ vim somefile
 :call dein#update()
 ```
 
-### 4. Setup iTerm2
+### 4. Setup Terminal
 
-1. Open iTerm2 Preferences
+1. Open Preferences
 2. Open Profiles tab
-3. Press + button and create new config
-4. Select `Window`
-  - Tweek `Transparency`
-5. Select `Colors`
+3. Press geer icon and load config
   - Go [this page](https://gist.github.com/luan/6362811) and download color scheme
   - Import it
+4. Select `Color and effect` under background
+  - Tweek `Transparency`
+  - Tweek `Blur`
 
 **Done!!**
