@@ -34,16 +34,7 @@ cd dotfiles
 make
 ```
 
-### 3. Execute make command in vimproc dir
-
-```
-cd .vim/bundle/vimproc
-make
-```
-
-* vimproc needs to be maked
-
-### 4. Install Vim Plugins
+### 3. Install Vim Plugins
 
 ```
 vim .vim/vimrc/neobundle.vim
@@ -53,7 +44,7 @@ vim .vim/vimrc/neobundle.vim
 
 **Done!!**
 
-### 5. Setup iTerm2
+### 4. Setup iTerm2
 
 1. Open iTerm2 Preferences
 2. Open Profiles tab
