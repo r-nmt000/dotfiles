@@ -6,7 +6,7 @@ You can install and build your favarite tools easily.
 This dotfiles consists of below configurations.
 
 * zsh
-* vim
+* neovim
 * tmux
 * ideavim
 * xkb
@@ -16,7 +16,7 @@ This dotfiles consists of below configurations.
 * `zsh`:  v5.0+
   * `autojump`
 * `git`:  v2.2+
-* `vim`:  v7.4+
+* `neovim`:  v0.3+
 * `zplug`: v2.1.0+
 * `awk`: **NOT** mawk
 
@@ -37,12 +37,10 @@ make
 ### 3. Install Vim Plugins
 
 ```
-vim .vim/vimrc/neobundle.vim
+vim somefile
 
-:NeoBundleInstall
+:call dein#update()
 ```
-
-**Done!!**
 
 ### 4. Setup iTerm2
 
@@ -55,4 +53,4 @@ vim .vim/vimrc/neobundle.vim
   - Go [this page](https://gist.github.com/luan/6362811) and download color scheme
   - Import it
 
-
+**Done!!**
