@@ -39,7 +39,7 @@ filetype plugin indent on
 
 "###Interface###
 set runtimepath+=~/.vim/
-"runtime! vimrc/*.vim
+runtime! vimrc/*.vim
 set number "show line numbers
 set title "show the file name you are editing
 set showmatch "highlight a corespond pair of bracket

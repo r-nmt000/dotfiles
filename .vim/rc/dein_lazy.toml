@@ -1,9 +1,9 @@
-[[plugin]]
-repos = 'Shougo/unite.vim'
-[[plugin]]
-repos = 'Shougo/neocomplete.vim'
+[[plugins]]
+repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
 on_i = 1
 [[plugins]]
-repo      = 'Shougo/neomru.vim'
+repo = 'Shougo/neomru.vim'
 on_source = ['unite.vim']
 
