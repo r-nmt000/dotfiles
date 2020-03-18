@@ -120,3 +120,10 @@ esac
 
 # 新規にzshを開いたら前回の作業ディレクトリに移動
 cd `cat ~/.curdir`
+
+# Read settings for local user
+# Write down some specific settings in .zsh_prifile
+if [ -f $HOME/.zsh_profile ]; then 
+   source ~/.zsh_profile
+fi
+
