@@ -25,3 +25,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Ignore karabiner settings but custome keybinds file
+/.config/karabiner/*
+!/.config/karabiner/assets/complex_modifications/0000000000.json
+!/.config/karabiner/assets/complex_modifications/0000000001.json
