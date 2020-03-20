@@ -25,7 +25,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Ignore karabiner settings but custome keybinds file
+# Ignore .config but nvim and karabiner custom keybind files
+# To achieve it, we need to tweek the gitignore
+# https://qiita.com/anqooqie/items/110957797b3d5280c44f
+/.config/*
+!/.config/nvim/
+!/.config/karabiner/
 /.config/karabiner/*
+!/.config/karabiner/assets/
+/.config/karabiner/assets/*
+!/.config/karabiner/assets/complex_modifications/
+/.config/karabiner/assets/complex_modifications/*
 !/.config/karabiner/assets/complex_modifications/0000000000.json
 !/.config/karabiner/assets/complex_modifications/0000000001.json
