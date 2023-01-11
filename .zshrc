@@ -2,12 +2,12 @@
 # export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
 # export ANTIGEN_DEFAULT_REPO_URL="https://github.com/robbyrussell/oh-my-zsh.git"
 #read settings for antigen
-# if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then 
+# if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then
 #    source ~/.zsh/.zshrc.antigen
 # fi
 
 # Read settings for zplug
-if [ -f $HOME/.zsh/.zshrc.zplug ]; then 
+if [ -f $HOME/.zsh/.zshrc.zplug ]; then
    source ~/.zsh/.zshrc.zplug
 fi
 
@@ -46,8 +46,9 @@ setopt pushd_ignore_dups
 function chpwd() { ls }
 
 # zshでautojumpを使えるようにする
-. /usr/share/autojump/autojump.zsh
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 function precmd() {
     pwd=`pwd`
     autojump -a $pwd
@@ -73,7 +74,7 @@ function title {
 ########################
 export PYENV_ROOT="${HOME}/.pyenv"
 if [ -n ${PYENV_ROOT} ]; then
-  path=(${PYENV_ROOT}/bin ${PYENV_ROOT}/shims ${path}) 
+  path=(${PYENV_ROOT}/bin ${PYENV_ROOT}/shims ${path})
 fi
 eval "$(pyenv init -)"
 
@@ -123,7 +124,7 @@ cd `cat ~/.curdir`
 
 # Read settings for local user
 # Write down some specific settings in .zsh_prifile
-if [ -f $HOME/.zsh_profile ]; then 
+if [ -f $HOME/.zsh_profile ]; then
    source ~/.zsh_profile
 fi
 
