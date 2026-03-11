@@ -128,3 +128,7 @@ if [ -f $HOME/.zsh_profile ]; then
    source ~/.zsh_profile
 fi
 
+# Read work specific settings
+if [ -f $HOME/.zshrc.work ]; then
+   source ~/.zshrc.work
+fi
