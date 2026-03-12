@@ -46,13 +46,12 @@ setopt pushd_ignore_dups
 function chpwd() { ls }
 
 # zshでautojumpを使えるようにする
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+if [[ -s /opt/homebrew/etc/autojump.sh ]]; then
+  source /opt/homebrew/etc/autojump.sh
+fi
 
 function precmd() {
-    pwd=`pwd`
-    autojump -a $pwd
-    echo $pwd > ~/.curdir
+  echo $pwd > ~/.curdir
 }
 
 #コマンドの訂正
