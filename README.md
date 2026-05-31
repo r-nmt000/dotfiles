@@ -33,7 +33,6 @@ chezmoi init --apply git@github-personal:r-nmt000/dotfiles.git
 
 These are referenced from `dot_zshrc` but each block is guarded with a presence check, so you can install them lazily as needed:
 
-- `pyenv` — Python version manager
 - `nvm` — Node version manager (auto-added to `dot_zshrc` by the nvm installer)
 - `autojump` — `j <substring>` shortcut
 
