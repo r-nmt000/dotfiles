@@ -162,32 +162,10 @@
     }
   },
   {
-    "context": "AgentPanel",
-    "bindings": {
-      "ctrl-h": "agents_sidebar::ToggleThreadHistory"
-    }
-  },
-  {
     "context": "ThreadsSidebar",
-    "unbind": {
-      "cmd-g": "agents_sidebar::ToggleThreadHistory"
-    }
-  },
-  {
-    "context": "AgentPanel",
     "bindings": {
+      "ctrl-h": "agents_sidebar::ToggleThreadHistory",
       "ctrl-s": [
-        "agents_sidebar::ToggleThreadSwitcher",
-        {
-          "select_last": true
-        }
-      ]
-    }
-  },
-  {
-    "context": "AgentPanel",
-    "unbind": {
-      "ctrl-shift-tab": [
         "agents_sidebar::ToggleThreadSwitcher",
         {
           "select_last": true
@@ -265,7 +243,40 @@
       "t n": "pane::AlternateFile",
       "t x": "pane::CloseActiveItem",
       "t l": "pane::ActivateNextItem",
-      "t h": "pane::ActivatePrevItem"
+      "t h": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "alt-cmd-j": "multi_workspace::ToggleWorkspaceSidebar"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-8": [
+        "workspace::ActivatePane",
+        7
+      ]
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-8": null
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-8": "multi_workspace::FocusWorkspaceSidebar"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "alt-cmd-;": "multi_workspace::FocusWorkspaceSidebar"
     }
   }
 ]
