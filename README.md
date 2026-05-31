@@ -20,11 +20,22 @@ In chezmoi convention, `dot_<name>` in the source becomes `~/.<name>` after `che
 ## Setup on a new machine
 
 ```sh
-brew install chezmoi
+# Required runtime dependencies (sourced by dot_zshrc / starship)
+brew install chezmoi antidote starship
+
+# Apply the dotfiles
 chezmoi init --apply git@github-personal:r-nmt000/dotfiles.git
 ```
 
-This clones the repo to `~/.local/share/chezmoi` (or your configured `sourceDir`) and copies every managed file into `$HOME`.
+`chezmoi init --apply` clones the repo to `~/.local/share/chezmoi` (or your configured `sourceDir`) and copies every managed file into `$HOME`. Without `antidote` and `starship` installed first, the new shell will print "command not found" on startup.
+
+### Optional runtime dependencies
+
+These are referenced from `dot_zshrc` but each block is guarded with a presence check, so you can install them lazily as needed:
+
+- `pyenv` — Python version manager
+- `nvm` — Node version manager (auto-added to `dot_zshrc` by the nvm installer)
+- `autojump` — `j <substring>` shortcut
 
 If you want chezmoi to use this repo at a custom path (as on this machine, `~/repos/dotfiles`), drop a config file:
 
