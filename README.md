@@ -88,7 +88,6 @@ These are referenced from `dot_zshrc` but each block is guarded with a presence 
 
 - `nvm` — Node version manager (the official installer auto-appends its init lines to `dot_zshrc`)
 - `autojump` — `j <substring>` shortcut (`brew install autojump`)
-- `rbenv`, `pyenv`, etc. — not currently wired in; add init lines if you need them
 
 ---
 
