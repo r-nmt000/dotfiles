@@ -1,0 +1,213 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-0": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-?": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-0": "agent::ToggleFocus"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-0": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-7": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-`": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-2": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-7": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-2": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-shift-b": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "cmd-2": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "unbind": {
+      "cmd-7": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-9": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-k": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-9": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-0": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "cmd-9": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "unbind": {
+      "cmd-0": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-7": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "alt-f12": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-7": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-g h": "git::FileHistory"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-g d": "git::Diff"
+    }
+  },
+  {
+    "context": "AcpThread > Editor",
+    "unbind": {
+      "ctrl-shift-d": "git::Diff"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-h": "agents_sidebar::ToggleThreadHistory"
+    }
+  },
+  {
+    "context": "ThreadsSidebar",
+    "unbind": {
+      "cmd-g": "agents_sidebar::ToggleThreadHistory"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-s": [
+        "agents_sidebar::ToggleThreadSwitcher",
+        {
+          "select_last": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "unbind": {
+      "ctrl-shift-tab": [
+        "agents_sidebar::ToggleThreadSwitcher",
+        {
+          "select_last": true
+        }
+      ]
+    }
+  },
+  {
+    "unbind": {
+      "cmd-0": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "unbind": {
+      "cmd-0": [
+        "zed::ResetBufferFontSize",
+        {
+          "persist": false
+        }
+      ]
+    }
+  }
+]

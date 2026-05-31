@@ -9,7 +9,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -25,16 +25,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Ignore .config but nvim and karabiner custom keybind files
-# To achieve it, we need to tweek the gitignore
-# https://qiita.com/anqooqie/items/110957797b3d5280c44f
-/.config/*
-!/.config/nvim/
-!/.config/karabiner/
-/.config/karabiner/*
-!/.config/karabiner/assets/
-/.config/karabiner/assets/*
-!/.config/karabiner/assets/complex_modifications/
-/.config/karabiner/assets/complex_modifications/*
-!/.config/karabiner/assets/complex_modifications/0000000000.json
-!/.config/karabiner/assets/complex_modifications/0000000001.json
+# .config: only what's committed here is symlinked by `make config`.
+# Add new tools by placing them under .config/<tool>/ — no gitignore tweaks needed.
+
+# karabiner: app auto-writes runtime/backup files; only commit hand-edited mappings
+/.config/karabiner/automatic_backups/
+/.config/karabiner/karabiner.json
+
+# zed: prompts/ is an LMDB binary store written by the app at runtime
+/.config/zed/prompts/
