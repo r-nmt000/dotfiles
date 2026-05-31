@@ -1,0 +1,11 @@
+# Load antidote
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+
+# Load plugins listed in ~/.zsh/zsh_plugins.txt
+antidote load ~/.zsh/zsh_plugins.txt
+
+# zsh-history-substring-search keybinds
+if (( $+widgets[history-substring-search-up] )); then
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
+fi

@@ -1,14 +1,6 @@
-#folkしたoh-my-zshを使うための設定
-# export ANTIGEN_DEFAULT_REPO_URL="https://github.com/r-nmt000/oh-my-zsh.git"
-# export ANTIGEN_DEFAULT_REPO_URL="https://github.com/robbyrussell/oh-my-zsh.git"
-#read settings for antigen
-# if [ -f $HOME/.zsh/antigen/antigen.zsh ]; then
-#    source ~/.zsh/.zshrc.antigen
-# fi
-
-# Read settings for zplug
-if [ -f $HOME/.zsh/.zshrc.zplug ]; then
-   source ~/.zsh/.zshrc.zplug
+# Load plugins via antidote
+if [ -f $HOME/.zsh/.zshrc.antidote ]; then
+   source ~/.zsh/.zshrc.antidote
 fi
 
 
@@ -135,3 +127,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Starship prompt (must be at the end of .zshrc)
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi

@@ -1,0 +1,5 @@
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+ohmyzsh/ohmyzsh path:lib
+zsh-users/zsh-syntax-highlighting
