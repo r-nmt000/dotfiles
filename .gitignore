@@ -34,3 +34,6 @@ Temporary Items
 
 # zed: prompts/ is an LMDB binary store written by the app at runtime
 /.config/zed/prompts/
+
+# nvim (LazyVim): plugin lockfile is regenerated locally
+/.config/nvim/lazy-lock.json
