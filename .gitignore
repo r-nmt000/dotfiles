@@ -26,14 +26,14 @@ Temporary Items
 # Add new tools by placing them under .config/<tool>/ — no gitignore tweaks needed.
 
 # karabiner: app auto-writes runtime/backup files; only commit hand-edited mappings
-/.config/karabiner/automatic_backups/
-/.config/karabiner/karabiner.json
+/dot_config/karabiner/automatic_backups/
+/dot_config/karabiner/karabiner.json
 
 # zed: prompts/ is an LMDB binary store written by the app at runtime
-/.config/zed/prompts/
+/dot_config/zed/prompts/
 
 # nvim (LazyVim): plugin lockfile is regenerated locally
-/.config/nvim/lazy-lock.json
+/dot_config/nvim/lazy-lock.json
 
 # vim/neovim swap files
 *.swp

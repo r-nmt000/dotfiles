@@ -1,0 +1,22 @@
+# Patterns are matched against TARGET paths (relative to $HOME), not source paths.
+# Reference: https://www.chezmoi.io/reference/special-files-and-directories/chezmoiignore/
+
+# Repository-only files (not deployed to home)
+README.md
+makefile
+vichrome_keymappings.txt
+
+# nvim auto-generated lockfile
+.config/nvim/lazy-lock.json
+
+# zed runtime data (LMDB binary)
+.config/zed/prompts
+.config/zed/prompts/**
+
+# karabiner: not actively managed; keep the machine-local copy intact
+.config/karabiner
+.config/karabiner/**
+
+# Editor temp files
+*.swp
+*.swo

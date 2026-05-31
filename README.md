@@ -1,50 +1,51 @@
 dotfiles
 ========
 
-Personal dotfiles for macOS development environment.
+Personal dotfiles for macOS development environment, managed with [chezmoi](https://www.chezmoi.io/).
 
 ## What's inside
 
-| Tool | Path |
-|------|------|
-| zsh | `.zshrc`, `.zsh/` |
-| git | `.gitconfig` |
-| tmux | `.tmux.conf` |
-| ideavim | `.ideavimrc` |
-| neovim (LazyVim) | `.config/nvim/` |
-| zed | `.config/zed/` |
-| karabiner | `.config/karabiner/` |
+| Tool | Source path |
+|------|-------------|
+| zsh | `dot_zshrc`, `dot_zsh/` |
+| git | `dot_gitconfig` |
+| tmux | `dot_tmux.conf` |
+| ideavim | `dot_ideavimrc` |
+| neovim (LazyVim) | `dot_config/nvim/` |
+| zed | `dot_config/zed/` |
+| karabiner | `dot_config/karabiner/` (ignored — managed locally) |
 
-`.config/` 配下はサブディレクトリ単位で `~/.config/<tool>/` に symlink される。新しいツールを追加するときは `.config/<tool>/` を置けば `make config` で自動的にリンクされる。
+In chezmoi convention, `dot_<name>` in the source becomes `~/.<name>` after `chezmoi apply`. See [chezmoi reference](https://www.chezmoi.io/reference/source-state-attributes/) for the full naming rules.
 
-## Requirements
-
-- `zsh` 5.0+
-- `git` 2.2+
-- `neovim` 0.10+ (LazyVim 想定)
-- `zplug` 2.1.0+
-- `awk` (NOT mawk)
-
-## Installation
+## Setup on a new machine
 
 ```sh
-# 個人用 SSH ホスト別名 github-personal をセットアップ済みの前提
-git clone git@github-personal:r-nmt000/dotfiles.git
-cd dotfiles
-make
+brew install chezmoi
+chezmoi init --apply git@github-personal:r-nmt000/dotfiles.git
 ```
 
-`make` は `make all` と同じで、`zsh / config / git / tmux / ideavim` をすべて実行する。
+This clones the repo to `~/.local/share/chezmoi` (or your configured `sourceDir`) and copies every managed file into `$HOME`.
 
-特定のツールだけ更新したいときは個別ターゲットを：
+If you want chezmoi to use this repo at a custom path (as on this machine, `~/repos/dotfiles`), drop a config file:
+
+```toml
+# ~/.config/chezmoi/chezmoi.toml
+sourceDir = "~/repos/dotfiles"
+```
+
+## Daily operations
 
 ```sh
-make config       # .config/* のみリンク
-make zsh          # zsh 設定のみ
-make git          # gitconfig のみ
+chezmoi diff              # preview pending changes
+chezmoi apply             # apply source state to $HOME
+chezmoi edit ~/.zshrc     # edit a managed file (opens source, then re-applies)
+chezmoi status            # show drift between source and target
+chezmoi cd                # cd into the source directory
+chezmoi update            # git pull + apply in one shot
 ```
 
 ## Notes
 
-- `~/.config/<tool>/` に既に実ディレクトリが存在する場合、`make config` は安全のためスキップする（既存設定の上書き防止）。新規端末以外で適用したいときは、`~/.config/<tool>/` を退避してから `make config` を再実行する。
-- `lazy-lock.json`（Neovim）や Zed の `prompts/` などの自動生成ファイルは `.gitignore` で除外している。
+- chezmoi places **real files**, not symlinks. Edit through `chezmoi edit` (not the target file directly), or edit the source under `dot_*` and run `chezmoi apply`.
+- `.chezmoiignore` controls what is *not* deployed. Patterns are matched against target paths (`~/`-relative).
+- `lazy-lock.json` (Neovim), `prompts/` (Zed runtime DB), and the entire karabiner directory are ignored — these are either machine-local or auto-regenerated.
