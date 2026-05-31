@@ -209,5 +209,63 @@
         }
       ]
     }
+  },
+
+  // ===== Migrated from .ideavimrc =====
+
+  // Insert mode: C-j to escape (JIS keyboard friendly)
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-j": "vim::NormalBefore"
+    }
+  },
+
+  // Normal mode: word ops, line jumps, soft-line motion, x without yank
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "v x": ["workspace::SendKeystrokes", "v a w x h"],
+      "y w": ["workspace::SendKeystrokes", "y i w"],
+      "d w": ["workspace::SendKeystrokes", "d i w"],
+      "c w": ["workspace::SendKeystrokes", "c i w"],
+      "0": "vim::FirstNonWhitespace",
+      "]": "vim::EndOfLine",
+      "j": "vim::Down",
+      "k": "vim::Up",
+      "x": ["workspace::SendKeystrokes", "\" _ x"],
+      "enter": ["workspace::SendKeystrokes", "i enter escape"]
+    }
+  },
+
+  // Visual mode: keep selection on indent, x without yank, vv to end of line
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      ">": ["workspace::SendKeystrokes", "> g v"],
+      "<": ["workspace::SendKeystrokes", "< g v"],
+      "x": ["workspace::SendKeystrokes", "\" _ x"],
+      "v": ["workspace::SendKeystrokes", "$ h"]
+    }
+  },
+
+  // Window splits & navigation (s prefix, IdeaVim style)
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "s s": "pane::SplitDown",
+      "s v": "pane::SplitRight",
+      "s x": "pane::CloseActiveItem",
+      "s h": "workspace::ActivatePaneLeft",
+      "s j": "workspace::ActivatePaneDown",
+      "s k": "workspace::ActivatePaneUp",
+      "s l": "workspace::ActivatePaneRight",
+
+      // Tab (Zed では Pane Item) operations
+      "t n": "pane::AlternateFile",
+      "t x": "pane::CloseActiveItem",
+      "t l": "pane::ActivateNextItem",
+      "t h": "pane::ActivatePrevItem"
+    }
   }
 ]

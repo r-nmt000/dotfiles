@@ -24,6 +24,12 @@
     "trust_all_worktrees": false
   },
   "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "use_multiline_find": true
+  },
+  "vertical_scroll_margin": 10,
   "agent_servers": {
     "codex-acp": {
       "type": "registry"
