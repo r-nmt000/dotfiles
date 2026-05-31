@@ -34,7 +34,7 @@ cd dotfiles
 make
 ```
 
-`make` は `make all` と同じで、`zsh / config / git / tmux / ideavim / xkb / link-shellscript` をすべて実行する。
+`make` は `make all` と同じで、`zsh / config / git / tmux / ideavim / link-shellscript` をすべて実行する。
 
 特定のツールだけ更新したいときは個別ターゲットを：
 

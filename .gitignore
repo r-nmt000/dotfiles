@@ -34,3 +34,7 @@ Temporary Items
 
 # nvim (LazyVim): plugin lockfile is regenerated locally
 /.config/nvim/lazy-lock.json
+
+# vim/neovim swap files
+*.swp
+*.swo

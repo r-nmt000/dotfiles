@@ -2,7 +2,7 @@ DOT_FILES = .zshrc .zsh .gitconfig .tmux.conf .ideavimrc
 CONFIG_DIRS = $(notdir $(wildcard .config/*))
 
 .PHONY: all clean
-all: zsh config git tmux ideavim xkb link-shellscript
+all: zsh config git tmux ideavim link-shellscript
 
 zsh: $(foreach f, $(filter .zsh%, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -15,8 +15,6 @@ git: $(foreach f, $(filter .gitconfig, $(DOT_FILES)), link-dot-file-$(f))
 tmux: $(foreach f, $(filter .tmux.conf, $(DOT_FILES)), link-dot-file-$(f))
 
 ideavim: $(foreach f, $(filter .ideavimrc, $(DOT_FILES)), link-dot-file-$(f))
-
-xkb: $(foreach f, $(filter .xkb, $(DOT_FILES)), link-dot-file-$(f))
 
 link-shellscript:
 	@echo "Create symlink bin to /usr/local/bin"
