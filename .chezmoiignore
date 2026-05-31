@@ -13,9 +13,13 @@ vichrome_keymappings.txt
 .config/zed/prompts
 .config/zed/prompts/**
 
-# karabiner: not actively managed; keep the machine-local copy intact
-.config/karabiner
-.config/karabiner/**
+# karabiner: only manage hand-authored complex_modifications presets.
+# karabiner.json and automatic_backups/ are rewritten by the app constantly,
+# and contain machine-specific device IDs, so we keep those local.
+.config/karabiner/karabiner.json
+.config/karabiner/automatic_backups
+.config/karabiner/automatic_backups/**
+.config/karabiner/system_default_profile.json
 
 # Editor temp files
 *.swp
