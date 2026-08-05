@@ -25,7 +25,5 @@
     keepBackup = false
 [mergetool "vimdiff3"]
     cmd = git_merge_wrapper3.sh \"$MERGED \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[diff]
-    external = git_diff_wrapper.sh
 [pager]
     diff = 
