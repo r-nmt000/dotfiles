@@ -5,6 +5,9 @@
 README.md
 makefile
 vichrome_keymappings.txt
+.idea
+.idea/**
+.DS_Store
 
 # nvim auto-generated lockfile
 .config/nvim/lazy-lock.json

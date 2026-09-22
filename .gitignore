@@ -22,8 +22,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# .config: only what's committed here is symlinked by `make config`.
-# Add new tools by placing them under .config/<tool>/ — no gitignore tweaks needed.
+# Machine-local data and IDE metadata are not managed dotfiles.
+/.config/
+/.idea/
 
 # karabiner: app auto-writes runtime/backup files; only commit hand-edited mappings
 /dot_config/karabiner/automatic_backups/
